@@ -4,7 +4,7 @@ import "./globals.css";
 import StickyCTA from "@/components/StickyCTA";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://trenerkarlinski.pl"), // <-- Dodana brakująca linijka
+  metadataBase: new URL("https://trenerkarlinski.pl"),
   title: "Patryk Karliński | Trener Pływania i Trening Personalny",
   description:
     "Indywidualne lekcje pływania i trening personalny w Szczecinie i Policach. Zajęcia dla dzieci, dorosłych oraz profesjonalne przygotowanie do startów dla triathlonistów.",
@@ -14,6 +14,7 @@ export const metadata: Metadata = {
     "nauka pływania dla dzieci Szczecin",
     "trening dla triathlonistów",
     "przygotowanie do triathlonu pływanie",
+    "trener pływania Police",
     "trener pływania Szczecin",
     "doskonalenie pływania",
     "trening personalny Szczecin",
