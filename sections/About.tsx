@@ -52,13 +52,13 @@ export default function About() {
               <div className="w-16 h-1.5 bg-gradient-to-r from-neutral-800 to-neutral-400 mb-8 rounded-full" />
 
               <div className="space-y-6 text-lg leading-relaxed text-neutral-600">
-                <p>
-                  Nazywam się <strong className="text-neutral-900 font-medium">Patryk</strong> i jestem trenerem pływania oraz trenerem personalnym. Pomagam dzieciom i dorosłym budować pewność w wodzie, poprawiać technikę oraz rozwijać formę fizyczną poprzez indywidualne podejście do treningu.
-                </p>
+          <p>
+  Nazywam się <strong className="text-neutral-900 font-medium">Patryk</strong>. Jako medalista Mistrzostw Świata i Europy oraz licencjonowany trener, wiem dokładnie, jak skutecznie osiągać cele. W swojej pracy trenera pływania i trenera personalnego pomagam dzieciom i dorosłym budować pewność w wodzie, szlifować technikę oraz rozwijać formę fizyczną, oferując w pełni indywidualne podejście do każdego treningu.
+</p>
 
-                <p>
-                  Każdy trening dopasowuję do poziomu, celu i możliwości podopiecznego — niezależnie czy zaczynasz od zera, czy chcesz wejść na wyższy poziom sportowy.
-                </p>
+<p>
+  Każdy plan dopasowuję do poziomu, celu i możliwości podopiecznego — niezależnie czy zaczynasz od zera, czy chcesz wejść na wyższy poziom sportowy.
+</p>
               </div>
             </div>
           </div>
