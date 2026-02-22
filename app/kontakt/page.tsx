@@ -1,21 +1,28 @@
 "use client";
 
 import { useState } from "react";
+import { sendEmail } from "@/app/actions/contact"; // 1. IMPORT NASZEJ FUNKCJI
 
 export default function KontaktPage() {
   const [sent, setSent] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null); // 2. DODANIE STANU DLA BŁĘDÓW
 
-  function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
+  // 3. ZMIANA FUNKCJI OBSŁUGUJĄCEJ WYSYŁKĘ
+  async function actionHandler(formData: FormData) {
     setIsSubmitting(true);
+    setErrorMsg(null);
 
-    // Symulacja wysyłania (możesz to podmienić na prawdziwe API)
-    setTimeout(() => {
+    // Wywołanie naszej prawdziwej funkcji serwerowej z danymi z formularza
+    const result = await sendEmail(formData);
+
+    if (result?.error) {
+      setErrorMsg(result.error);
       setIsSubmitting(false);
+    } else {
       setSent(true);
-      console.log("Formularz wysłany");
-    }, 1000);
+      setIsSubmitting(false);
+    }
   }
 
   return (
@@ -37,7 +44,7 @@ export default function KontaktPage() {
           </h1>
         </div>
 
-        {/* Układ dwukolumnowy: Info po lewej, Formularz po prawej */}
+        {/* Układ dwukolumnowy */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
           
           {/* LEWA KOLUMNA: Informacje kontaktowe */}
@@ -60,7 +67,7 @@ export default function KontaktPage() {
               </a>
 
               {/* Email */}
-              <a href="mailto:karlinski96@gmail.com" className="flex items-center gap-6 group w-max">
+              <a href="mailto:kontakt@trenerkarlinski.pl" className="flex items-center gap-6 group w-max">
                 <div className="w-14 h-14 rounded-full bg-neutral-900 border border-white/10 flex items-center justify-center text-neutral-400 group-hover:bg-white group-hover:text-black transition-all duration-300">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
                     <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
@@ -68,7 +75,7 @@ export default function KontaktPage() {
                   </svg>
                 </div>
                 <span className="text-xl font-light tracking-wide text-neutral-300 group-hover:text-white transition-colors">
-                  karlinski96@gmail.com
+                  kontakt@trenerkarlinski.pl
                 </span>
               </a>
             </div>
@@ -93,14 +100,34 @@ export default function KontaktPage() {
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-6">
+              // 4. ZMIANA Z onSubmit NA action
+              <form action={actionHandler} className="space-y-6">
                 
+                {/* 5. DODANIE HONEYPOTA */}
+                <input type="text" name="_hp_username" style={{ display: 'none' }} tabIndex={-1} autoComplete="off" />
+
+                {/* 6. DODANIE name="name" DO IMIENIA (Musiałem dorzucić to pole, bo w backendzie wymagasz 'name') */}
+                <div className="space-y-2">
+                  <label htmlFor="name" className="text-sm font-medium text-neutral-400 uppercase tracking-widest pl-2">
+                    Twoje Imię
+                  </label>
+                  <input
+                    id="name"
+                    name="name"
+                    type="text"
+                    placeholder="np. Jan Kowalski"
+                    required
+                    className="w-full p-4 rounded-2xl bg-black/50 border border-white/10 text-white placeholder-neutral-600 focus:outline-none focus:border-white/40 focus:bg-black/80 transition-all duration-300"
+                  />
+                </div>
+
                 <div className="space-y-2">
                   <label htmlFor="email" className="text-sm font-medium text-neutral-400 uppercase tracking-widest pl-2">
                     Twój Email
                   </label>
                   <input
                     id="email"
+                    name="email" 
                     type="email"
                     placeholder="np. jan@kowalski.pl"
                     required
@@ -114,12 +141,18 @@ export default function KontaktPage() {
                   </label>
                   <textarea
                     id="message"
+                    name="message" 
                     placeholder="Jak mogę Ci pomóc?"
                     required
                     rows={5}
                     className="w-full p-4 rounded-2xl bg-black/50 border border-white/10 text-white placeholder-neutral-600 focus:outline-none focus:border-white/40 focus:bg-black/80 transition-all duration-300 resize-none"
                   />
                 </div>
+
+                {/* 9. WYŚWIETLANIE BŁĘDU, JEŚLI WYSYŁKA ZAWIEDZIE */}
+                {errorMsg && (
+                  <p className="text-red-400 text-sm pl-2">{errorMsg}</p>
+                )}
 
                 <button
                   type="submit"

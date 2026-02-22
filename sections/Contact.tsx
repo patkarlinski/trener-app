@@ -36,7 +36,7 @@ export default function Contact() {
 
           {/* EMAIL */}
           <a
-            href="mailto:karlinski96@gmail.com"
+            href="mailto:kontakt@trenerkarlinski.pl"
             className="group flex flex-col items-center gap-5 p-8 rounded-3xl bg-neutral-900/50 border border-white/5 hover:border-white/20 hover:bg-neutral-900 transition-all duration-300 hover:-translate-y-1"
           >
             <div className="w-14 h-14 rounded-full bg-neutral-800 border border-white/10 flex items-center justify-center group-hover:scale-110 group-hover:bg-white group-hover:text-black transition-all duration-300">
@@ -46,7 +46,7 @@ export default function Contact() {
               </svg>
             </div>
             <span className="text-lg md:text-xl font-light tracking-wide text-neutral-300 group-hover:text-white transition-colors">
-              karlinski96@gmail.com
+              kontakt@trenerkarlinski.pl
             </span>
           </a>
 
