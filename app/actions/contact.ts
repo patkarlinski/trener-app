@@ -17,7 +17,7 @@ export async function sendEmail(formData: FormData) {
       from: 'Kontakt <kontakt@trenerkarlinski.pl>',
       to: [process.env.CONTACT_RECEIVER as string],
       subject: `Wiadomość od: ${name}`,
-      reply_to: email,
+      replyTo: email,
       text: `Imię: ${name}\nE-mail: ${email}\n\nWiadomość:\n${message}`,
     });
 
