@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 import { sendEmail } from "@/app/actions/contact"; // 1. IMPORT NASZEJ FUNKCJI
 
@@ -166,6 +167,9 @@ export default function KontaktPage() {
                     </svg>
                   )}
                 </button>
+                <p className="text-xs text-neutral-500 text-center mt-3">
+              Wysyłając wiadomość, akceptujesz <Link href="/polityka-prywatnosci" className="underline hover:text-neutral-700">Politykę Prywatności</Link>.
+</p>
               </form>
             )}
           </div>

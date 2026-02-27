@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import "./globals.css";
 import StickyCTA from "@/components/StickyCTA";
+// NOWE IMPORTY:
+import Script from "next/script"; 
+import CookieBanner from "@/components/CookieBanner"; 
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://trenerkarlinski.pl"),
@@ -52,9 +55,33 @@ export default function RootLayout({
   return (
     <html lang="pl">
       <body>
+        {/* --- GOOGLE ANALYTICS (Ładowane w tle) --- */}
+        <Script
+          strategy="lazyOnload"
+          src={`https://www.googletagmanager.com/gtag/js?id=G-82EVQGSPQR`}
+        />
+        <Script
+          id="google-analytics"
+          strategy="lazyOnload"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-82EVQGSPQR', {
+                page_path: window.location.pathname,
+              });
+            `,
+          }}
+        />
+        {/* --- KONIEC GOOGLE ANALYTICS --- */}
+
         <Navbar />
         {children}
         <StickyCTA />
+        
+        {/* BANER CIASTECZEK (Pojawi się tylko, jeśli użytkownik nie kliknął "Rozumiem") */}
+        <CookieBanner />
       </body>
     </html>
   );

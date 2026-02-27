@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Contact() {
   return (
     <section id="kontakt" className="relative py-24 bg-neutral-950 text-white overflow-hidden border-t border-white/5">
@@ -90,9 +92,12 @@ export default function Contact() {
           </div>
         </div>
 
-        {/* COPYRIGHT */}
-        <div className="mt-16 text-center text-neutral-600 text-xs tracking-wider uppercase">
-          &copy; {new Date().getFullYear()} Patryk Karliński. Wszelkie prawa zastrzeżone.
+        {/* COPYRIGHT I POLITYKA */}
+        <div className="mt-16 text-center text-neutral-600 text-xs tracking-wider uppercase flex flex-col items-center gap-3">
+          <p>&copy; {new Date().getFullYear()} Patryk Karliński. Wszelkie prawa zastrzeżone.</p>
+          <Link href="/polityka-prywatnosci" className="hover:text-neutral-400 transition-colors underline underline-offset-4">
+            Polityka Prywatności
+          </Link>
         </div>
 
       </div>

@@ -5,7 +5,7 @@ export default function Hero() {
       {/* ZDJĘCIE W TLE */}
       <div
         className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: "url('/banner.jpg')" }}
+        style={{ backgroundImage: "url('/banner.webp')" }}
       />
 
       {/* OGÓLNE PRZYCIEMNIENIE */}
