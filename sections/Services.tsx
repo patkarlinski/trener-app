@@ -18,7 +18,7 @@ export default function Services() {
               {/* Zdjęcie w tle */}
               <div
                 className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-105"
-                style={{ backgroundImage: "url('/swim.jpg')" }}
+                style={{ backgroundImage: "url('/swim.webp')" }}
               />
               {/* Gradient tła - odsłania górę zdjęcia, przyciemnia dół pod tekst */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/50 to-transparent opacity-90 transition-opacity duration-500 group-hover:opacity-100" />
@@ -54,7 +54,7 @@ export default function Services() {
               {/* Zdjęcie w tle */}
               <div
                 className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-105"
-                style={{ backgroundImage: "url('/gym.jpg')" }}
+                style={{ backgroundImage: "url('/gym.webp')" }}
               />
               {/* Gradient tła */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/50 to-transparent opacity-90 transition-opacity duration-500 group-hover:opacity-100" />

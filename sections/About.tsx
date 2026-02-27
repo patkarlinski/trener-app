@@ -18,7 +18,7 @@ export default function About() {
             {/* TUTAJ ZMIENIONO WYSOKOŚĆ: h-[500px] dla mobile i h-[680px] dla desktopu */}
             <div className="relative h-[500px] md:h-[680px] rounded-[2rem] overflow-hidden shadow-2xl">
               <img
-                src="/me.jpeg"
+                src="/me.webp"
                 alt="Trener pływania"
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-in-out group-hover:scale-110"
               />
