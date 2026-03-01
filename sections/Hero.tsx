@@ -2,7 +2,7 @@ import { preload } from "react-dom";
 
 export default function Hero() {
   
-preload('/banner.webp', { as: 'image', fetchPriority: 'high' });
+  preload('/banner.webp', { as: 'image' });
 
   return (
     <section className="relative h-[65vh] min-h-[500px] flex items-center justify-center overflow-hidden">
