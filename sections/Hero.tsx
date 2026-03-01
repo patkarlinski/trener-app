@@ -1,8 +1,14 @@
+import { preload } from "react-dom";
+
 export default function Hero() {
+  
+  // MAGICZNA LINIJKA: Mówi przeglądarce "Pobieraj ten plik jako pierwszy, zanim wyrenderujesz resztę strony!"
+  preload('/banner.webp', { as: 'image' });
+
   return (
     <section className="relative h-[65vh] min-h-[500px] flex items-center justify-center overflow-hidden">
 
-      {/* ZDJĘCIE W TLE */}
+      {/* ZDJĘCIE W TLE (Teraz z najwyższym priorytetem pobierania) */}
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{ backgroundImage: "url('/banner.webp')" }}
@@ -31,7 +37,7 @@ export default function Hero() {
         </h1>
       </div>
 
-      {/* STRZAŁKA SCROLLOWANIA (Teraz poprawnie widoczna też na mobile) */}
+      {/* STRZAŁKA SCROLLOWANIA */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce opacity-70 z-20">
         <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />

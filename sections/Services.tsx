@@ -1,4 +1,6 @@
+// 1. DODAJ IMPORT
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Services() {
   return (
@@ -9,21 +11,28 @@ export default function Services() {
           <div className="w-16 h-1 bg-white mt-6 mx-auto rounded-full opacity-20" />
         </div>
 
-        {/* GRID - zmniejszyłem gap dla lepszej spójności */}
+        {/* GRID */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
 
           {/* Pływanie */}
           <Link href="/oferta#plywanie" className="group block h-[480px] lg:h-[520px]">
             <div className="relative w-full h-full rounded-[2rem] overflow-hidden border border-white/10 bg-neutral-900 transition-all duration-500 group-hover:-translate-y-2 group-hover:border-white/30 group-hover:shadow-[0_20px_40px_rgba(255,255,255,0.05)]">
-              {/* Zdjęcie w tle */}
-              <div
-                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-105"
-                style={{ backgroundImage: "url('/swim.webp')" }}
-              />
-              {/* Gradient tła - odsłania górę zdjęcia, przyciemnia dół pod tekst */}
+              
+              {/* ZMIANA: Zoptymalizowane zdjęcie w tle z zachowanym efektem przybliżenia */}
+              <div className="absolute inset-0 transition-transform duration-700 ease-out group-hover:scale-105">
+                <Image
+                  src="/swim.webp"
+                  alt="Nauka i doskonalenie pływania"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover object-center"
+                />
+              </div>
+
+              {/* Gradient tła */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/50 to-transparent opacity-90 transition-opacity duration-500 group-hover:opacity-100" />
 
-              {/* Zawartość - wyrównana do lewej i zepchnięta na dół */}
+              {/* Zawartość */}
               <div className="relative h-full flex flex-col justify-end p-8 md:p-12">
                 <h3 className="text-3xl font-bold mb-4 text-white">
                   Nauka i doskonalenie pływania
@@ -51,11 +60,18 @@ export default function Services() {
           {/* Trening */}
           <Link href="/oferta#trening" className="group block h-[480px] lg:h-[520px]">
             <div className="relative w-full h-full rounded-[2rem] overflow-hidden border border-white/10 bg-neutral-900 transition-all duration-500 group-hover:-translate-y-2 group-hover:border-white/30 group-hover:shadow-[0_20px_40px_rgba(255,255,255,0.05)]">
-              {/* Zdjęcie w tle */}
-              <div
-                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-105"
-                style={{ backgroundImage: "url('/gym.webp')" }}
-              />
+              
+              {/* ZMIANA: Zoptymalizowane zdjęcie w tle z zachowanym efektem przybliżenia */}
+              <div className="absolute inset-0 transition-transform duration-700 ease-out group-hover:scale-105">
+                <Image
+                  src="/gym.webp"
+                  alt="Trening personalny"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover object-center"
+                />
+              </div>
+
               {/* Gradient tła */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/50 to-transparent opacity-90 transition-opacity duration-500 group-hover:opacity-100" />
 

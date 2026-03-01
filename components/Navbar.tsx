@@ -56,15 +56,19 @@ export default function Navbar() {
       <nav className="max-w-7xl mx-auto px-6 flex justify-between items-center text-white relative z-10">
 
         {/* LOGO */}
-        <Link
-          href="/"
-          onClick={closeMenu}
-          className={`font-bold tracking-widest uppercase transition-all duration-500 ${
-            scrolled ? "text-lg md:text-xl" : "text-xl md:text-2xl drop-shadow-lg"
-          }`}
-        >
-          Patryk Karliński <span className="font-light text-neutral-400">| Trener</span>
-        </Link>
+        <Link 
+  href="/" 
+  onClick={(e) => {
+    // Jeśli jesteśmy na stronie głównej, zrób płynny scroll do góry
+    if (window.location.pathname === '/') {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }}
+  className="text-xl md:text-2xl font-bold tracking-widest uppercase text-white hover:opacity-80 transition-opacity"
+>
+  Patryk Karliński <span className="font-light text-neutral-400">| Trener</span>
+</Link>
 
         {/* DESKTOP MENU */}
         {/* ZMIANA 2: Ujednolicono pisownię na sztywno z wielkich liter (O MNIE) */}

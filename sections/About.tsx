@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function About() {
   return (
     <section
@@ -15,14 +17,19 @@ export default function About() {
           <div className="relative group w-full">
             <div className="absolute -inset-4 border-2 border-neutral-200 rounded-[2.5rem] -z-10 hidden md:block transition-transform duration-500 group-hover:scale-105" />
             
-            {/* TUTAJ ZMIENIONO WYSOKOŚĆ: h-[500px] dla mobile i h-[680px] dla desktopu */}
             <div className="relative h-[500px] md:h-[680px] rounded-[2rem] overflow-hidden shadow-2xl">
-              <img
-                src="/me.webp"
-                alt="Trener pływania"
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-in-out group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent opacity-80" />
+              
+              {/* TUTAJ ZMIANA: Zoptymalizowany obrazek z Next.js */}
+           <Image
+  src="/me.webp"
+  alt="Trener pływania Patryk"
+  fill
+  sizes="(max-width: 768px) 100vw, 50vw"
+  // DODANO object-top PONIŻEJ:
+  className="object-cover object-top transition-transform duration-700 ease-in-out group-hover:scale-110"
+/>
+              
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent opacity-80 z-10" />
             </div>
           </div>
 
@@ -52,13 +59,13 @@ export default function About() {
               <div className="w-16 h-1.5 bg-gradient-to-r from-neutral-800 to-neutral-400 mb-8 rounded-full" />
 
               <div className="space-y-6 text-lg leading-relaxed text-neutral-600">
-          <p>
-  Nazywam się <strong className="text-neutral-900 font-medium">Patryk</strong>. Jako medalista Mistrzostw Świata i Europy oraz licencjonowany trener, wiem dokładnie, jak skutecznie osiągać cele. W swojej pracy trenera pływania i trenera personalnego pomagam dzieciom i dorosłym budować pewność w wodzie, szlifować technikę oraz rozwijać formę fizyczną, oferując w pełni indywidualne podejście do każdego treningu.
-</p>
+                <p>
+                  Nazywam się <strong className="text-neutral-900 font-medium">Patryk</strong>. Jako medalista Mistrzostw Świata i Europy oraz licencjonowany trener, wiem dokładnie, jak skutecznie osiągać cele. W swojej pracy trenera pływania i trenera personalnego pomagam dzieciom i dorosłym budować pewność w wodzie, szlifować technikę oraz rozwijać formę fizyczną, oferując w pełni indywidualne podejście do każdego treningu.
+                </p>
 
-<p>
-  Każdy plan dopasowuję do poziomu, celu i możliwości podopiecznego — niezależnie czy zaczynasz od zera, czy chcesz wejść na wyższy poziom sportowy.
-</p>
+                <p>
+                  Każdy plan dopasowuję do poziomu, celu i możliwości podopiecznego — niezależnie czy zaczynasz od zera, czy chcesz wejść na wyższy poziom sportowy.
+                </p>
               </div>
             </div>
           </div>
