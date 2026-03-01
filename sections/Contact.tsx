@@ -18,7 +18,7 @@ export default function Contact() {
           <div className="w-16 h-1 bg-gradient-to-r from-neutral-600 to-neutral-400 mx-auto rounded-full opacity-50" />
         </div>
 
-        {/* GŁÓWNE DANE KONTAKTOWE (Grid: 1 kolumna na mobile, 2 na desktopie) */}
+        {/* GŁÓWNE DANE KONTAKTOWE */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 max-w-3xl mx-auto">
           
           {/* TELEFON */}
@@ -56,7 +56,8 @@ export default function Contact() {
 
         {/* SOCIAL MEDIA */}
         <div className="mt-16 pt-12 border-t border-white/10 flex flex-col items-center gap-6">
-          <p className="text-neutral-500 uppercase tracking-widest text-sm font-medium">
+          {/* POPRAWKA 1: text-neutral-400 zamiast 500 */}
+          <p className="text-neutral-400 uppercase tracking-widest text-sm font-medium">
             Znajdź mnie w sieci
           </p>
           <div className="flex gap-6">
@@ -93,9 +94,12 @@ export default function Contact() {
         </div>
 
         {/* COPYRIGHT I POLITYKA */}
-        <div className="mt-16 text-center text-neutral-600 text-xs tracking-wider uppercase flex flex-col items-center gap-3">
+        <div className="mt-16 text-center text-neutral-400 text-xs tracking-wider uppercase flex flex-col items-center gap-3">
+          {/* POPRAWKA 2: Copyright będzie teraz jaśniejszy, dziedzicząc text-neutral-400 z diva wyżej */}
           <p>&copy; {new Date().getFullYear()} Patryk Karliński. Wszelkie prawa zastrzeżone.</p>
-          <Link href="/polityka-prywatnosci" className="hover:text-neutral-400 transition-colors underline underline-offset-4">
+          
+          {/* POPRAWKA 3: Dodano text-neutral-400 i hover:text-white */}
+          <Link href="/polityka-prywatnosci" className="text-neutral-400 hover:text-white transition-colors underline underline-offset-4">
             Polityka Prywatności
           </Link>
         </div>
