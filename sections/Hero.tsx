@@ -2,8 +2,7 @@ import { preload } from "react-dom";
 
 export default function Hero() {
   
-  // MAGICZNA LINIJKA: Mówi przeglądarce "Pobieraj ten plik jako pierwszy, zanim wyrenderujesz resztę strony!"
-  preload('/banner.webp', { as: 'image' });
+preload('/banner.webp', { as: 'image', fetchPriority: 'high' });
 
   return (
     <section className="relative h-[65vh] min-h-[500px] flex items-center justify-center overflow-hidden">
