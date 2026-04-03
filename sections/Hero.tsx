@@ -1,16 +1,18 @@
-import { preload } from "react-dom";
+import Image from "next/image";
 
 export default function Hero() {
-  
-  preload('/banner.webp', { as: 'image' });
-
   return (
     <section className="relative h-[65vh] min-h-[500px] flex items-center justify-center overflow-hidden">
 
-      {/* ZDJĘCIE W TLE (Teraz z najwyższym priorytetem pobierania) */}
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: "url('/banner.webp')" }}
+      <Image
+        src="/banner.webp"
+        alt="Trening pływacki i siłowy — Patryk Karliński, trener"
+        fill
+        priority
+        fetchPriority="high"
+        sizes="100vw"
+        className="object-cover object-center"
+        quality={82}
       />
 
       {/* OGÓLNE PRZYCIEMNIENIE */}

@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     siteName: "Patryk Karliński – Trener",
     images: [
       {
-        url: "/banner.jpg",
+        url: "/banner.webp",
         width: 1200,
         height: 630,
         alt: "Patryk Karliński w trakcie treningu pływackiego",
