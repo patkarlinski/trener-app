@@ -5,6 +5,9 @@
 
 export type AppRootMetadata = {
   metadataBase: URL;
+  alternates?: {
+    canonical: string;
+  };
   title: string;
   description: string;
   keywords?: string[];
@@ -40,6 +43,10 @@ export type AppPageMetadata = {
     url: string;
     locale: string;
     type: string;
+  };
+  robots?: {
+    index: boolean;
+    follow: boolean;
   };
 };
 

@@ -1,8 +1,13 @@
 import Link from "next/link";
+import type { AppPageMetadata } from "@/types/app-seo";
 
-export const metadata = {
+export const metadata: AppPageMetadata = {
   title: "Polityka Prywatności | Patryk Karliński",
   description: "Polityka prywatności i zasady przetwarzania danych osobowych.",
+  alternates: {
+    canonical: "https://trenerkarlinski.pl/polityka-prywatnosci",
+  },
+  robots: { index: true, follow: true },
 };
 
 export default function PrivacyPolicy() {

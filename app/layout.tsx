@@ -9,6 +9,9 @@ import LocalBusinessJsonLd from "@/components/LocalBusinessJsonLd";
 
 export const metadata: AppRootMetadata = {
   metadataBase: new URL("https://trenerkarlinski.pl"),
+  alternates: {
+    canonical: "https://trenerkarlinski.pl",
+  },
   title: "Patryk Karliński | Trener Pływania i Trening Personalny",
   description:
     "Indywidualne lekcje pływania i trening personalny w Szczecinie i Policach. Zajęcia dla dzieci, dorosłych oraz profesjonalne przygotowanie do startów dla triathlonistów.",
