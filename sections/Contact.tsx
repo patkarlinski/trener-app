@@ -54,6 +54,24 @@ export default function Contact() {
 
         </div>
 
+        <div className="mt-12 text-center text-sm text-neutral-500 max-w-xl mx-auto">
+          <p className="mb-3 text-neutral-400">Zajęcia w Twojej okolicy</p>
+          <div className="flex flex-wrap justify-center gap-x-6 gap-y-2">
+            <Link
+              href="/nauka-plywania-szczecin"
+              className="text-neutral-300 hover:text-white underline underline-offset-4 transition-colors"
+            >
+              Nauka pływania — Szczecin
+            </Link>
+            <Link
+              href="/nauka-plywania-police"
+              className="text-neutral-300 hover:text-white underline underline-offset-4 transition-colors"
+            >
+              Nauka pływania — Police
+            </Link>
+          </div>
+        </div>
+
         {/* SOCIAL MEDIA */}
         <div className="mt-16 pt-12 border-t border-white/10 flex flex-col items-center gap-6">
           {/* POPRAWKA 1: text-neutral-400 zamiast 500 */}

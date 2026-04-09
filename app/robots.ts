@@ -1,6 +1,6 @@
-import { MetadataRoute } from 'next'
+import type { AppRobots } from "@/types/app-seo";
 
-export default function robots(): MetadataRoute.Robots {
+export default function robots(): AppRobots {
   return {
     rules: {
       userAgent: '*',

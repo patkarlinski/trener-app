@@ -1,12 +1,13 @@
-import type { Metadata } from "next";
+import type { AppRootMetadata } from "@/types/app-seo";
 import Navbar from "@/components/Navbar";
 import "./globals.css";
 import StickyCTA from "@/components/StickyCTA";
 // NOWE IMPORTY:
 import Script from "next/script"; 
-import CookieBanner from "@/components/CookieBanner"; 
+import CookieBanner from "@/components/CookieBanner";
+import LocalBusinessJsonLd from "@/components/LocalBusinessJsonLd";
 
-export const metadata: Metadata = {
+export const metadata: AppRootMetadata = {
   metadataBase: new URL("https://trenerkarlinski.pl"),
   title: "Patryk Karliński | Trener Pływania i Trening Personalny",
   description:
@@ -55,6 +56,7 @@ export default function RootLayout({
   return (
     <html lang="pl">
       <body>
+        <LocalBusinessJsonLd />
         {/* --- GOOGLE ANALYTICS (Ładowane w tle) --- */}
         <Script
           strategy="lazyOnload"
