@@ -330,7 +330,10 @@ export default function PreviewPage() {
       </section>
 
       {/* 4. Kontakt */}
-      <section id="kontakt" className="scroll-mt-28 py-24 md:py-32 bg-[#0c1016]">
+      <section
+        id="kontakt"
+        className="scroll-mt-[4.75rem] bg-[#0c1016] pt-8 pb-24 md:scroll-mt-28 md:py-32"
+      >
         <div className="max-w-3xl mx-auto px-5 text-center">
           <p className="text-sm tracking-[0.14em] uppercase text-sky-300/80 mb-4 font-medium">
             Kontakt
@@ -348,8 +351,8 @@ export default function PreviewPage() {
           </p>
 
           <div className="mb-8 w-full rounded-2xl border border-sky-400/30 bg-gradient-to-r from-sky-500/15 via-sky-500/10 to-transparent px-6 py-5 sm:px-8 sm:py-6 text-center">
-            <p className="inline-flex flex-wrap items-center justify-center gap-2.5 text-lg sm:text-xl font-semibold text-white leading-snug">
-              <span className="inline-flex items-center rounded-md bg-sky-400/20 px-2.5 py-1 text-xs font-bold tracking-wider uppercase text-sky-300 border border-sky-400/40">
+            <p className="inline-flex w-full flex-col items-center justify-center gap-2 text-lg font-semibold leading-snug text-white sm:w-auto sm:flex-row sm:flex-wrap sm:gap-2.5 sm:text-xl">
+              <span className="inline-flex items-center rounded-md border border-sky-400/40 bg-sky-400/20 px-2.5 py-1 text-xs font-bold uppercase tracking-wider text-sky-300">
                 Start
               </span>
               Pierwszy trening w niższej cenie
