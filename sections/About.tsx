@@ -7,7 +7,7 @@ export default function About() {
       className="relative py-32 bg-neutral-50 overflow-hidden"
     >
       {/* Dekoracyjne rozmyte plamy w tle */}
-      <div className="absolute top-0 left-0 w-96 h-96 bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-50 -translate-x-1/2 -translate-y-1/2"></div>
+      <div className="absolute top-0 left-0 w-96 h-96 bg-sky-100 rounded-full mix-blend-multiply filter blur-3xl opacity-50 -translate-x-1/2 -translate-y-1/2"></div>
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-teal-100 rounded-full mix-blend-multiply filter blur-3xl opacity-50 translate-x-1/2 translate-y-1/2"></div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
@@ -45,7 +45,7 @@ export default function About() {
             transition-all duration-500
             hover:-translate-y-1 hover:shadow-[0_20px_50px_rgba(0,0,0,0.15)]
           ">
-            <div className="absolute top-0 right-0 -mt-6 -mr-6 w-32 h-32 bg-gradient-to-br from-blue-50 to-neutral-100 rounded-full blur-2xl opacity-60"></div>
+            <div className="absolute top-0 right-0 -mt-6 -mr-6 w-32 h-32 bg-gradient-to-br from-sky-50 to-neutral-100 rounded-full blur-2xl opacity-60"></div>
 
             <div className="relative">
               <span className="inline-block px-4 py-1.5 text-xs font-semibold tracking-widest text-neutral-500 uppercase bg-white/50 rounded-full mb-4 shadow-sm border border-neutral-100">

@@ -7,11 +7,8 @@ type ChangeFrequency =
   | "yearly"
   | "never";
 
-/**
- * Data ostatniej **realnej** zmiany treści / SEO na stronie (format ISO dzień).
- * Podbij ją przy kolejnym wdrożeniu, gdy faktycznie coś zmieniasz — nie ustawiaj `new Date()`.
- */
-const SITE_CONTENT_LAST_UPDATED = "2026-04-09";
+
+const SITE_CONTENT_LAST_UPDATED = "2026-10-15";
 
 type SitemapEntry = {
   url: string;

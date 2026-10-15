@@ -4,154 +4,157 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
-type ActiveSection = "about" | "oferta" | "kontakt" | "";
+/** Menu one-page — ten sam wygląd na wszystkich stronach. */
+const CTA_CLASS =
+  "px-6 py-3 rounded-full bg-sky-400 text-neutral-950 text-base font-semibold tracking-wide hover:bg-sky-300 transition-colors";
+
+const MAIN = "/";
+
+const NAV = [
+  { href: "#about", label: "O mnie" },
+  { href: "#oferta", label: "Oferta" },
+  { href: "#kontakt", label: "Kontakt" },
+  { href: "#faq", label: "FAQ" },
+] as const;
 
 export default function Navbar() {
   const pathname = usePathname() ?? "";
   const router = useRouter();
 
   const [scrolled, setScrolled] = useState(false);
-  const [active, setActive] = useState<ActiveSection>("");
   const [menuOpen, setMenuOpen] = useState(false);
+  const [ready, setReady] = useState(false);
+
+  const onOnePager = pathname === MAIN;
+  // SSR i pierwsze malowanie: zawsze solidne tło — pathname w root layout
+  // bywa puste przy SSR i powodowało mismatch (transparent vs bg-[#07090c]).
+  const solidNav = !ready || scrolled || !onOnePager;
 
   useEffect(() => {
-    const newActive =
-      pathname === "/oferta"
-        ? "oferta"
-        : pathname === "/kontakt"
-        ? "kontakt"
-        : "";
-    setActive(newActive);
-  }, [pathname]);
+    setReady(true);
+  }, []);
 
   useEffect(() => {
     function handleScroll() {
       setScrolled(window.scrollY > 20);
     }
-    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  function goToAbout() {
+  useEffect(() => {
     setMenuOpen(false);
-    if (pathname === "/") {
-      const el = document.getElementById("about");
-      if (el) el.scrollIntoView({ behavior: "smooth" });
-    } else {
-      router.push("/#about");
+  }, [pathname]);
+
+  function goToSection(hash: string) {
+    setMenuOpen(false);
+    const id = hash.replace("#", "");
+
+    if (pathname === MAIN) {
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+      return;
+    }
+
+    router.push(`${MAIN}${hash}`);
+  }
+
+  function goHome(e: React.MouseEvent) {
+    if (pathname === MAIN) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      setMenuOpen(false);
     }
   }
 
-  const closeMenu = () => setMenuOpen(false);
-
   return (
     <header
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
-        scrolled
-          // ZMIANA 1: Usunięto obramowanie (border-b) i zmniejszono przezroczystość tła (bg-black/90)
-          ? "py-4 bg-black/90 backdrop-blur-xl shadow-[0_10px_30px_rgba(0,0,0,0.5)]"
-          : "py-6 bg-gradient-to-b from-black/80 to-transparent"
+      className={`fixed top-0 left-0 z-50 w-full max-w-[100vw] transition-colors duration-300 ${
+        solidNav ? "bg-[#07090c]" : "bg-transparent"
       }`}
     >
-      <nav className="max-w-7xl mx-auto px-6 flex justify-between items-center text-white relative z-10">
+      <nav className="mx-auto w-full max-w-6xl px-5 h-[4.75rem] flex items-center justify-between gap-4 text-white box-border">
+        <Link
+          href={MAIN}
+          onClick={goHome}
+          className="shrink-0 text-left hover:opacity-80 transition-opacity"
+          style={{ fontFamily: "var(--font-preview-display), sans-serif" }}
+        >
+          <span className="flex flex-row items-baseline leading-none">
+            <span className="text-2xl sm:text-3xl lg:text-[2rem] font-bold tracking-[0.08em] uppercase">
+              Karliński
+            </span>
+            <span className="ml-2 text-xs text-neutral-400 font-medium tracking-[0.14em] uppercase sm:ml-2.5 sm:text-base lg:text-lg">
+              Trener
+            </span>
+          </span>
+        </Link>
 
-        {/* LOGO */}
-        <Link 
-  href="/" 
-  onClick={(e) => {
-    // Jeśli jesteśmy na stronie głównej, zrób płynny scroll do góry
-    if (window.location.pathname === '/') {
-      e.preventDefault();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-  }}
-  className="text-xl md:text-2xl font-bold tracking-widest uppercase text-white hover:opacity-80 transition-opacity"
->
-  Patryk Karliński <span className="font-light text-neutral-400">| Trener</span>
-</Link>
-
-        {/* DESKTOP MENU */}
-        {/* ZMIANA 2: Ujednolicono pisownię na sztywno z wielkich liter (O MNIE) */}
-        <div className="hidden lg:flex items-center gap-10 text-sm tracking-widest uppercase font-medium">
-          
+        <div className="hidden lg:flex items-center gap-7 text-base font-medium tracking-[0.06em] uppercase text-neutral-200">
+          {NAV.map((item) => (
+            <button
+              key={item.href}
+              type="button"
+              onClick={() => goToSection(item.href)}
+              className="hover:text-white transition-colors"
+            >
+              {item.label}
+            </button>
+          ))}
           <button
-            onClick={goToAbout}
-            className={`relative group py-2 transition-colors duration-300 hover:text-white ${
-              active === "about" ? "text-white" : "text-neutral-400"
-            }`}
+            type="button"
+            onClick={() => goToSection("#kontakt")}
+            className={`ml-2 ${CTA_CLASS}`}
           >
-            O MNIE
-            <span className={`absolute left-0 bottom-0 h-[2px] bg-white transition-all duration-300 ${active === "about" ? "w-full" : "w-0 group-hover:w-full"}`}></span>
+            Umów zajęcia
           </button>
-
-          <Link
-            href="/oferta"
-            className={`relative group py-2 transition-colors duration-300 hover:text-white ${
-              active === "oferta" ? "text-white" : "text-neutral-400"
-            }`}
-          >
-            OFERTA
-            <span className={`absolute left-0 bottom-0 h-[2px] bg-white transition-all duration-300 ${active === "oferta" ? "w-full" : "w-0 group-hover:w-full"}`}></span>
-          </Link>
-
-          <Link
-            href="/kontakt"
-            className={`relative group py-2 transition-colors duration-300 hover:text-white ${
-              active === "kontakt" ? "text-white" : "text-neutral-400"
-            }`}
-          >
-            KONTAKT
-            <span className={`absolute left-0 bottom-0 h-[2px] bg-white transition-all duration-300 ${active === "kontakt" ? "w-full" : "w-0 group-hover:w-full"}`}></span>
-          </Link>
-          
         </div>
 
-        {/* ANIMOWANY HAMBURGER (MOBILE) */}
         <button
-          onClick={() => setMenuOpen(!menuOpen)}
-          className="lg:hidden relative w-8 h-8 flex items-center justify-center focus:outline-none"
-          aria-label="Toggle Menu"
+          type="button"
+          onClick={() => setMenuOpen((v) => !v)}
+          className="lg:hidden w-10 h-10 flex items-center justify-center focus:outline-none"
+          aria-label="Menu"
         >
-          <div className="flex flex-col items-end justify-between w-6 h-4 transform transition-all duration-300 origin-center overflow-hidden">
-            <span className={`bg-white h-[2px] w-full transform transition-all duration-300 origin-left ${menuOpen ? "rotate-[42deg] w-7" : ""}`}></span>
-            <span className={`bg-white h-[2px] w-full rounded transform transition-all duration-300 ${menuOpen ? "opacity-0 -translate-x-10" : ""}`}></span>
-            <span className={`bg-white h-[2px] w-full transform transition-all duration-300 origin-left ${menuOpen ? "-rotate-[42deg] w-7" : ""}`}></span>
-          </div>
+          <span className="flex flex-col gap-1.5 w-5">
+            <span
+              className={`h-px bg-white transition-transform ${
+                menuOpen ? "translate-y-[4px] rotate-45" : ""
+              }`}
+            />
+            <span
+              className={`h-px bg-white transition-opacity ${menuOpen ? "opacity-0" : ""}`}
+            />
+            <span
+              className={`h-px bg-white transition-transform ${
+                menuOpen ? "-translate-y-[4px] -rotate-45" : ""
+              }`}
+            />
+          </span>
         </button>
-
       </nav>
 
-    {/* MOBILE MENU (ROZWIJANE PŁYNNIE) */}
-      <div
-        className={`lg:hidden absolute top-full left-0 w-full bg-black/90 backdrop-blur-2xl overflow-hidden transition-all duration-500 ease-in-out ${
-          menuOpen ? "max-h-[400px] opacity-100" : "max-h-0 opacity-0"
-        }`}
-      >
-        <div className="flex flex-col items-center gap-8 py-10 text-lg uppercase tracking-widest font-medium">
-          <button 
-            onClick={goToAbout} 
-            className={`transition-colors duration-300 ${active === "about" ? "text-white" : "text-neutral-400 hover:text-white"}`}
+      {menuOpen && (
+        <div className="lg:hidden border-t border-white/5 bg-[#07090c] px-5 py-6 flex flex-col gap-5 text-lg font-medium tracking-[0.08em] uppercase">
+          {NAV.map((item) => (
+            <button
+              key={item.href}
+              type="button"
+              onClick={() => goToSection(item.href)}
+              className="text-left text-neutral-200 hover:text-white"
+            >
+              {item.label}
+            </button>
+          ))}
+          <button
+            type="button"
+            onClick={() => goToSection("#kontakt")}
+            className={`mt-2 w-full ${CTA_CLASS}`}
           >
-            O MNIE
+            Umów zajęcia
           </button>
-
-          <Link 
-            href="/oferta" 
-            onClick={closeMenu}
-            className={`transition-colors duration-300 ${active === "oferta" ? "text-white" : "text-neutral-400 hover:text-white"}`}
-          >
-            OFERTA
-          </Link>
-
-          <Link 
-            href="/kontakt" 
-            onClick={closeMenu}
-            className={`transition-colors duration-300 ${active === "kontakt" ? "text-white" : "text-neutral-400 hover:text-white"}`}
-          >
-            KONTAKT
-          </Link>
         </div>
-      </div>
+      )}
     </header>
   );
 }

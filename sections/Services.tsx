@@ -47,9 +47,9 @@ export default function Services() {
                 <div className="flex items-center text-white font-medium">
                   <span className="relative overflow-hidden">
                     <span className="inline-block transition-transform duration-300 group-hover:-translate-y-full">Zobacz szczegóły</span>
-                    <span className="absolute left-0 top-0 inline-block translate-y-full transition-transform duration-300 group-hover:translate-y-0 text-blue-400">Zobacz szczegóły</span>
+                    <span className="absolute left-0 top-0 inline-block translate-y-full transition-transform duration-300 group-hover:translate-y-0 text-sky-400">Zobacz szczegóły</span>
                   </span>
-                  <svg className="w-5 h-5 ml-2 transform transition-transform duration-300 group-hover:translate-x-2 group-hover:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 ml-2 transform transition-transform duration-300 group-hover:translate-x-2 group-hover:text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
                 </div>
@@ -90,9 +90,9 @@ export default function Services() {
                 <div className="flex items-center text-white font-medium">
                   <span className="relative overflow-hidden">
                     <span className="inline-block transition-transform duration-300 group-hover:-translate-y-full">Zobacz szczegóły</span>
-                    <span className="absolute left-0 top-0 inline-block translate-y-full transition-transform duration-300 group-hover:translate-y-0 text-blue-400">Zobacz szczegóły</span>
+                    <span className="absolute left-0 top-0 inline-block translate-y-full transition-transform duration-300 group-hover:translate-y-0 text-sky-400">Zobacz szczegóły</span>
                   </span>
-                  <svg className="w-5 h-5 ml-2 transform transition-transform duration-300 group-hover:translate-x-2 group-hover:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 ml-2 transform transition-transform duration-300 group-hover:translate-x-2 group-hover:text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
                 </div>

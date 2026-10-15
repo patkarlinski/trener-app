@@ -5,7 +5,7 @@ export default function Oferta() {
     <main className="relative pt-40 pb-32 bg-neutral-950 text-white min-h-screen overflow-hidden">
       
       {/* Subtelne rozmycia w tle dla głębi (Premium feel) */}
-      <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-blue-900/10 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-sky-900/10 rounded-full blur-[150px] pointer-events-none" />
       <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-neutral-800/20 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
@@ -21,7 +21,7 @@ export default function Oferta() {
           <p className="text-lg md:text-xl text-neutral-400 font-light tracking-wide">
             Lekcje pływania i trening personalny w Szczecinie / Policach
           </p>
-          <div className="w-16 h-1 bg-gradient-to-r from-blue-500 to-neutral-400 mx-auto mt-8 rounded-full opacity-50" />
+          <div className="w-16 h-1 bg-gradient-to-r from-sky-500 to-neutral-400 mx-auto mt-8 rounded-full opacity-50" />
         </div>
 
         {/* GRID Z OFERTAMI (1 kolumna mobile, 3 na desktopie) */}
@@ -29,7 +29,7 @@ export default function Oferta() {
 
           {/* KARTA 1: Nauka pływania */}
           <div className="group relative bg-neutral-900/40 backdrop-blur-xl border border-white/10 p-10 rounded-[2.5rem] hover:bg-neutral-900/80 hover:border-white/30 transition-all duration-500 hover:-translate-y-2 flex flex-col">
-            <div className="w-16 h-16 rounded-2xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 mb-8 group-hover:scale-110 transition-transform duration-500">
+            <div className="w-16 h-16 rounded-2xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center text-sky-400 mb-8 group-hover:scale-110 transition-transform duration-500">
               {/* Ikona: Fale/Woda */}
               <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M3 3v18h18" />
@@ -44,15 +44,15 @@ export default function Oferta() {
             
             <ul className="space-y-4 mb-10 text-neutral-300 font-light">
               <li className="flex items-start gap-3">
-                <span className="text-blue-400 mt-1">✔</span>
+                <span className="text-sky-400 mt-1">✔</span>
                 Przełamanie lęku przed wodą
               </li>
               <li className="flex items-start gap-3">
-                <span className="text-blue-400 mt-1">✔</span>
+                <span className="text-sky-400 mt-1">✔</span>
                 Nauka od podstaw (dzieci i dorośli)
               </li>
               <li className="flex items-start gap-3">
-                <span className="text-blue-400 mt-1">✔</span>
+                <span className="text-sky-400 mt-1">✔</span>
                 Podstawy prawidłowego oddechu
               </li>
             </ul>

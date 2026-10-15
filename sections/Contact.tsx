@@ -5,7 +5,7 @@ export default function Contact() {
     <section id="kontakt" className="relative py-24 bg-neutral-950 text-white overflow-hidden border-t border-white/5">
       
       {/* Delikatna poświata w tle dla głębi */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-blue-900/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-sky-900/10 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="max-w-5xl mx-auto px-6 relative z-10">
         

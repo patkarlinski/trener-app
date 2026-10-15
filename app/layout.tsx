@@ -2,10 +2,23 @@ import type { AppRootMetadata } from "@/types/app-seo";
 import Navbar from "@/components/Navbar";
 import "./globals.css";
 import StickyCTA from "@/components/StickyCTA";
-// NOWE IMPORTY:
-import Script from "next/script"; 
+import SiteChrome from "@/components/SiteChrome";
+import Script from "next/script";
 import CookieBanner from "@/components/CookieBanner";
 import LocalBusinessJsonLd from "@/components/LocalBusinessJsonLd";
+import { Syne, DM_Sans } from "next/font/google";
+
+const syne = Syne({
+  subsets: ["latin", "latin-ext"],
+  variable: "--font-preview-display",
+  display: "swap",
+});
+
+const dmSans = DM_Sans({
+  subsets: ["latin", "latin-ext"],
+  variable: "--font-preview-body",
+  display: "swap",
+});
 
 export const metadata: AppRootMetadata = {
   metadataBase: new URL("https://trenerkarlinski.pl"),
@@ -57,8 +70,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="pl">
-      <body>
+    <html lang="pl" className={`${syne.variable} ${dmSans.variable}`}>
+      <body style={{ fontFamily: "var(--font-preview-body), sans-serif" }}>
         <LocalBusinessJsonLd />
         {/* --- GOOGLE ANALYTICS (Ładowane w tle) --- */}
         <Script
@@ -83,9 +96,9 @@ export default function RootLayout({
 
         <Navbar />
         {children}
-        <StickyCTA />
-        
-        {/* BANER CIASTECZEK (Pojawi się tylko, jeśli użytkownik nie kliknął "Rozumiem") */}
+        <SiteChrome>
+          <StickyCTA />
+        </SiteChrome>
         <CookieBanner />
       </body>
     </html>

@@ -30,7 +30,7 @@ export default function KontaktPage() {
     <main className="relative pt-40 pb-32 bg-neutral-950 text-white min-h-screen overflow-hidden">
       
       {/* Subtelna poświata w tle */}
-      <div className="absolute top-20 left-0 w-[500px] h-[500px] bg-blue-900/10 rounded-full blur-[120px] pointer-events-none -translate-x-1/2" />
+      <div className="absolute top-20 left-0 w-[500px] h-[500px] bg-sky-900/10 rounded-full blur-[120px] pointer-events-none -translate-x-1/2" />
       <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-neutral-800/20 rounded-full blur-[150px] pointer-events-none translate-x-1/3 translate-y-1/3" />
 
       <div className="max-w-6xl mx-auto px-6 relative z-10">

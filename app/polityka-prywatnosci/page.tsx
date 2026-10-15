@@ -13,7 +13,7 @@ export const metadata: AppPageMetadata = {
 export default function PrivacyPolicy() {
   return (
     <main className="max-w-3xl mx-auto px-4 py-24 sm:py-32 text-white">
-      <Link href="/" className="text-blue-400 hover:text-blue-300 transition-colors mb-8 inline-block">
+      <Link href="/" className="text-sky-400 hover:text-sky-300 transition-colors mb-8 inline-block">
         &larr; Wróć na stronę główną
       </Link>
       <h1 className="text-3xl font-bold mb-8 text-white">Polityka Prywatności</h1>
