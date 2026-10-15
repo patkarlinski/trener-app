@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 
 /** Menu one-page — ten sam wygląd na wszystkich stronach. */
 const CTA_CLASS =
-  "px-6 py-3 rounded-full bg-sky-400 text-neutral-950 text-base font-semibold tracking-wide hover:bg-sky-300 transition-colors";
+  "cursor-pointer px-6 py-3 rounded-full bg-sky-400 text-neutral-950 text-base font-semibold tracking-wide hover:bg-sky-300 transition-colors";
 
 const MAIN = "/";
 

@@ -80,7 +80,7 @@ const PHONE_E164 = "48511258922";
 const PHONE_DISPLAY = "511 258 922";
 const EMAIL = "kontakt@trenerkarlinski.pl";
 const CTA_PILL_CLASS =
-  "px-6 py-3 rounded-full bg-sky-400 text-neutral-950 text-base font-semibold tracking-wide hover:bg-sky-300 transition-colors";
+  "cursor-pointer px-6 py-3 rounded-full bg-sky-400 text-neutral-950 text-base font-semibold tracking-wide hover:bg-sky-300 transition-colors";
 
 function buildContactMessage(goal: ContactGoal) {
   return `Cześć Patryk! Chcę umówić pierwszy trening.
@@ -198,14 +198,14 @@ export default function PreviewPage() {
             <button
               type="button"
               onClick={() => scrollTo("#kontakt")}
-              className="w-full rounded-full bg-sky-400 px-8 py-3.5 text-sm font-semibold tracking-wide text-neutral-950 transition-colors hover:bg-sky-300 md:w-auto md:text-lg"
+              className="cursor-pointer w-full rounded-full bg-sky-400 px-8 py-3.5 text-sm font-semibold tracking-wide text-neutral-950 transition-colors hover:bg-sky-300 md:w-auto md:text-lg"
             >
               Umów zajęcia
             </button>
             <button
               type="button"
               onClick={() => scrollTo("#oferta")}
-              className="w-full rounded-full border border-white/25 px-8 py-3.5 text-sm font-semibold text-neutral-200 transition-colors hover:border-white/50 hover:bg-white/5 md:w-auto md:text-lg md:font-normal"
+              className="cursor-pointer w-full rounded-full border border-white/25 px-8 py-3.5 text-sm font-semibold text-neutral-200 transition-colors hover:border-white/50 hover:bg-white/5 md:w-auto md:text-lg md:font-normal"
             >
               Oferta
             </button>
@@ -351,7 +351,7 @@ export default function PreviewPage() {
           </p>
 
           <div className="mb-8 w-full rounded-2xl border border-sky-400/30 bg-gradient-to-r from-sky-500/15 via-sky-500/10 to-transparent px-6 py-5 sm:px-8 sm:py-6 text-center">
-            <p className="inline-flex w-full flex-col items-center justify-center gap-2 text-lg font-semibold leading-snug text-white sm:w-auto sm:flex-row sm:flex-wrap sm:gap-2.5 sm:text-xl">
+            <p className="flex w-full flex-col items-center justify-center gap-2 text-lg font-semibold leading-snug text-white sm:text-xl">
               <span className="inline-flex items-center rounded-md border border-sky-400/40 bg-sky-400/20 px-2.5 py-1 text-xs font-bold uppercase tracking-wider text-sky-300">
                 Start
               </span>
@@ -379,7 +379,7 @@ export default function PreviewPage() {
                   type="button"
                   onClick={() => setSelectedGoal(goal)}
                   aria-pressed={active}
-                  className={`w-full rounded-full px-4 py-2.5 text-sm font-medium transition-colors border sm:w-auto sm:px-5 sm:text-base ${
+                  className={`cursor-pointer w-full rounded-full px-4 py-2.5 text-sm font-medium transition-colors border sm:w-auto sm:px-5 sm:text-base ${
                     active
                       ? "bg-sky-500/15 border-sky-400 text-sky-100"
                       : "bg-transparent text-zinc-400 border-white/10 hover:border-white/25 hover:text-zinc-200"
@@ -396,7 +396,7 @@ export default function PreviewPage() {
               href={whatsappHref}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2.5 px-6 py-4 rounded-full bg-sky-400 text-neutral-950 text-base font-semibold tracking-wide hover:bg-sky-300 transition-colors"
+              className="inline-flex cursor-pointer items-center justify-center gap-2.5 px-6 py-4 rounded-full bg-sky-400 text-neutral-950 text-base font-semibold tracking-wide hover:bg-sky-300 transition-colors"
             >
               <svg
                 className="w-5 h-5 shrink-0"
@@ -410,7 +410,7 @@ export default function PreviewPage() {
             </a>
             <a
               href={smsHref}
-              className="inline-flex items-center justify-center gap-2.5 px-6 py-4 rounded-full border border-white/20 bg-white/[0.03] text-white text-base font-semibold tracking-wide hover:bg-white/[0.08] transition-colors"
+              className="inline-flex cursor-pointer items-center justify-center gap-2.5 px-6 py-4 rounded-full border border-white/20 bg-white/[0.03] text-white text-base font-semibold tracking-wide hover:bg-white/[0.08] transition-colors"
             >
               <svg
                 className="w-5 h-5 shrink-0"
