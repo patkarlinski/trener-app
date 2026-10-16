@@ -132,24 +132,29 @@ export default function Navbar() {
             setMenuOpen((v) => !v);
             e.currentTarget.blur();
           }}
-          className="lg:hidden w-10 h-10 flex items-center justify-center outline-none focus:outline-none focus-visible:outline-none"
-          aria-label="Menu"
+          className="lg:hidden flex h-11 w-11 shrink-0 items-center justify-center outline-none focus:outline-none focus-visible:outline-none"
+          aria-label={menuOpen ? "Zamknij menu" : "Otwórz menu"}
+          aria-expanded={menuOpen}
         >
-          <span className="flex flex-col gap-1.5 w-5">
-            <span
-              className={`h-px bg-white transition-transform ${
-                menuOpen ? "translate-y-[4px] rotate-45" : ""
-              }`}
-            />
-            <span
-              className={`h-px bg-white transition-opacity ${menuOpen ? "opacity-0" : ""}`}
-            />
-            <span
-              className={`h-px bg-white transition-transform ${
-                menuOpen ? "-translate-y-[4px] -rotate-45" : ""
-              }`}
-            />
-          </span>
+          {menuOpen ? (
+            <svg
+              className="h-6 w-6 text-white"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              aria-hidden
+            >
+              <path d="M6 6l12 12M18 6L6 18" />
+            </svg>
+          ) : (
+            <span className="flex w-5 flex-col gap-1.5" aria-hidden>
+              <span className="h-0.5 w-full rounded-full bg-white" />
+              <span className="h-0.5 w-full rounded-full bg-white" />
+              <span className="h-0.5 w-full rounded-full bg-white" />
+            </span>
+          )}
         </button>
       </nav>
 
