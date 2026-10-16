@@ -27,16 +27,21 @@ export const metadata: AppRootMetadata = {
   },
   title: "Patryk Karliński | Trener Pływania i Trening Personalny",
   description:
-    "Indywidualne lekcje pływania i trening personalny w Szczecinie i Policach. Zajęcia dla dzieci, dorosłych oraz profesjonalne przygotowanie do startów dla triathlonistów.",
+    "Indywidualne lekcje pływania dla dorosłych i dzieci w Szczecinie i Policach. Nauka i doskonalenie pływania, trener na basenie, trening personalny i triathlon.",
   keywords: [
     "nauka pływania Szczecin",
     "nauka pływania Police",
+    "nauka pływania dla dorosłych",
     "nauka pływania dla dzieci Szczecin",
+    "doskonalenie pływania",
+    "doskonalenie pływania dla dorosłych",
+    "lekcje pływania",
+    "indywidualne lekcje pływania",
+    "trener pływania Szczecin",
+    "trener pływania Police",
+    "trener basen",
     "trening dla triathlonistów",
     "przygotowanie do triathlonu pływanie",
-    "trener pływania Police",
-    "trener pływania Szczecin",
-    "doskonalenie pływania",
     "trening personalny Szczecin",
     "trener personalny Police",
     "Patryk Karliński",
@@ -44,7 +49,7 @@ export const metadata: AppRootMetadata = {
   openGraph: {
     title: "Patryk Karliński | Trener Pływania i Trening Personalny",
     description:
-      "Zajęcia dla dzieci, dorosłych i triathlonistów. Indywidualne lekcje pływania i trening personalny w Szczecinie i Policach. Buduj formę pod okiem profesjonalisty.",
+      "Nauka i doskonalenie pływania dla dorosłych i dzieci. Indywidualne lekcje pływania oraz trening personalny w Szczecinie i Policach.",
     url: "https://trenerkarlinski.pl", 
     siteName: "Patryk Karliński – Trener",
     images: [

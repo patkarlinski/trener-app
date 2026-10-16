@@ -43,6 +43,12 @@ export type AppPageMetadata = {
     url: string;
     locale: string;
     type: string;
+    images?: Array<{
+      url: string;
+      width: number;
+      height: number;
+      alt: string;
+    }>;
   };
   robots?: {
     index: boolean;

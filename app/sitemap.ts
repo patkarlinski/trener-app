@@ -8,7 +8,7 @@ type ChangeFrequency =
   | "never";
 
 
-const SITE_CONTENT_LAST_UPDATED = "2026-10-15";
+const SITE_CONTENT_LAST_UPDATED = "2026-10-16";
 
 type SitemapEntry = {
   url: string;

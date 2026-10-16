@@ -17,6 +17,45 @@ export default function LocalBusinessJsonLd() {
       { "@type": "City", name: "Szczecin" },
       { "@type": "City", name: "Police" },
     ],
+    knowsAbout: [
+      "nauka pływania",
+      "nauka pływania dla dorosłych",
+      "doskonalenie pływania",
+      "indywidualne lekcje pływania",
+      "trening pływacki",
+      "triatlon — pływanie",
+      "trening personalny",
+    ],
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Oferta treningowa",
+      itemListElement: [
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Nauka pływania",
+            url: `${SITE}/#oferta`,
+          },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Doskonalenie pływania",
+            url: `${SITE}/#oferta`,
+          },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Trening siłowy",
+            url: `${SITE}/#oferta`,
+          },
+        },
+      ],
+    },
     sameAs: ["https://www.instagram.com/karlinski.patryk"],
   };
 
