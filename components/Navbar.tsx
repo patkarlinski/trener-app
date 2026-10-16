@@ -48,20 +48,33 @@ export default function Navbar() {
   }, [pathname]);
 
   function goToSection(hash: string) {
-    setMenuOpen(false);
     const id = hash.replace("#", "");
+    const wasMenuOpen = menuOpen;
+    setMenuOpen(false);
 
-    if (pathname === MAIN) {
-      const el = document.getElementById(id);
-      if (!el) return;
-      // Nav 4.75rem + zapas — na mobile scrollIntoView bywa zbyt wysoko pod sticky header.
-      const offset = window.matchMedia("(min-width: 768px)").matches ? 112 : 144;
-      const top = el.getBoundingClientRect().top + window.scrollY - offset;
-      window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
+    if (pathname !== MAIN) {
+      router.push(`${MAIN}${hash}`);
       return;
     }
 
-    router.push(`${MAIN}${hash}`);
+    // Na mobile najpierw zamknij menu — inaczej getBoundingClientRect liczy
+    // pozycję przy otwartym panelu i po zamknięciu lądujemy za wysoko.
+    const runScroll = () => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const header = document.querySelector("header");
+      const headerH = header?.getBoundingClientRect().height ?? 76;
+      const gap = window.matchMedia("(min-width: 768px)").matches ? 24 : 20;
+      const top =
+        el.getBoundingClientRect().top + window.scrollY - headerH - gap;
+      window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
+    };
+
+    if (wasMenuOpen) {
+      window.setTimeout(runScroll, 80);
+    } else {
+      runScroll();
+    }
   }
 
   function goHome(e: React.MouseEvent) {

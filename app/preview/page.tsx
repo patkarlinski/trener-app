@@ -105,28 +105,30 @@ export default function PreviewPage() {
     };
   }, [contactSheetOpen]);
 
+  function scrollToId(id: string) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const header = document.querySelector("header");
+    const headerH = header?.getBoundingClientRect().height ?? 76;
+    const gap = window.matchMedia("(min-width: 768px)").matches ? 24 : 20;
+    const top = el.getBoundingClientRect().top + window.scrollY - headerH - gap;
+    window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
+  }
+
   useEffect(() => {
     const hash = window.location.hash.replace("#", "");
     if (!hash) return;
-    const t = window.setTimeout(() => {
-      document.getElementById(hash)?.scrollIntoView({ behavior: "smooth", block: "start" });
-    }, 80);
+    const t = window.setTimeout(() => scrollToId(hash), 100);
     return () => window.clearTimeout(t);
   }, []);
 
   function scrollTo(href: string) {
-    const id = href.replace("#", "");
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    scrollToId(href.replace("#", ""));
   }
 
   function bookLesson(goal: ContactGoal) {
     setSelectedGoal(goal);
-    requestAnimationFrame(() => {
-      document.getElementById("kontakt")?.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-    });
+    requestAnimationFrame(() => scrollToId("kontakt"));
   }
 
   const message = buildContactMessage(selectedGoal);
