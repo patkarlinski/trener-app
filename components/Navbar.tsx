@@ -52,7 +52,12 @@ export default function Navbar() {
     const id = hash.replace("#", "");
 
     if (pathname === MAIN) {
-      document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+      const el = document.getElementById(id);
+      if (!el) return;
+      // Nav 4.75rem + zapas — na mobile scrollIntoView bywa zbyt wysoko pod sticky header.
+      const offset = window.matchMedia("(min-width: 768px)").matches ? 112 : 144;
+      const top = el.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
       return;
     }
 
