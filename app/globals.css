@@ -22,13 +22,8 @@
 html {
   overflow-x: hidden;
   scrollbar-gutter: stable;
-  scroll-padding-top: 9rem;
-}
-
-@media (min-width: 768px) {
-  html {
-    scroll-padding-top: 7rem;
-  }
+  /* = wysokość sticky nav — bez dodatkowego gapu (inaczej widać poprzednią sekcję) */
+  scroll-padding-top: 4.75rem;
 }
 
 body {

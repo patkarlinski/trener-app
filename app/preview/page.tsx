@@ -207,7 +207,7 @@ export default function PreviewPage() {
       </section>
 
       {/* 2. O mnie */}
-      <section id="about" className="scroll-mt-44 py-24 md:scroll-mt-28 md:py-32">
+      <section id="about" className="scroll-mt-[4.75rem] py-24 md:py-32">
         <div className="max-w-6xl mx-auto px-5 grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
           <div className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.45)]">
             <Image
@@ -265,7 +265,7 @@ export default function PreviewPage() {
       </section>
 
       {/* 3. Oferta */}
-      <section id="oferta" className="scroll-mt-44 bg-[#0c1016] py-24 md:scroll-mt-28 md:py-32">
+      <section id="oferta" className="scroll-mt-[4.75rem] bg-[#0c1016] py-24 md:py-32">
         <div className="max-w-6xl mx-auto px-5">
           <p className="text-sm tracking-[0.14em] uppercase text-sky-300/80 mb-4 font-medium">
             Oferta
@@ -325,7 +325,7 @@ export default function PreviewPage() {
       {/* 4. Kontakt */}
       <section
         id="kontakt"
-        className="scroll-mt-[4.75rem] bg-[#0c1016] pt-8 pb-24 md:scroll-mt-28 md:py-32"
+        className="scroll-mt-[4.75rem] bg-[#0c1016] pt-8 pb-24 md:py-32"
       >
         <div className="max-w-3xl mx-auto px-5 text-center">
           <p className="text-sm tracking-[0.14em] uppercase text-sky-300/80 mb-4 font-medium">
@@ -470,7 +470,7 @@ export default function PreviewPage() {
       </section>
 
       {/* 5. FAQ */}
-      <section id="faq" className="scroll-mt-44 py-24 md:scroll-mt-28 md:py-32">
+      <section id="faq" className="scroll-mt-[4.75rem] bg-[#07090c] py-24 md:py-32">
         <div className="max-w-3xl mx-auto px-5">
           <p className="text-sm tracking-[0.14em] uppercase text-sky-300/80 mb-4 font-medium">
             FAQ
