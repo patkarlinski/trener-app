@@ -113,16 +113,22 @@ export default function Navbar() {
             <button
               key={item.href}
               type="button"
-              onClick={() => goToSection(item.href)}
-              className="hover:text-white transition-colors"
+              onClick={(e) => {
+                goToSection(item.href);
+                e.currentTarget.blur();
+              }}
+              className="hover:text-white transition-colors outline-none focus:outline-none focus-visible:outline-none"
             >
               {item.label}
             </button>
           ))}
           <button
             type="button"
-            onClick={() => goToSection("#kontakt")}
-            className={`ml-2 ${CTA_CLASS}`}
+            onClick={(e) => {
+              goToSection("#kontakt");
+              e.currentTarget.blur();
+            }}
+            className={`ml-2 outline-none focus:outline-none focus-visible:outline-none ${CTA_CLASS}`}
           >
             Umów zajęcia
           </button>
@@ -130,8 +136,11 @@ export default function Navbar() {
 
         <button
           type="button"
-          onClick={() => setMenuOpen((v) => !v)}
-          className="lg:hidden w-10 h-10 flex items-center justify-center focus:outline-none"
+          onClick={(e) => {
+            setMenuOpen((v) => !v);
+            e.currentTarget.blur();
+          }}
+          className="lg:hidden w-10 h-10 flex items-center justify-center outline-none focus:outline-none focus-visible:outline-none"
           aria-label="Menu"
         >
           <span className="flex flex-col gap-1.5 w-5">
@@ -158,16 +167,22 @@ export default function Navbar() {
             <button
               key={item.href}
               type="button"
-              onClick={() => goToSection(item.href)}
-              className="text-left text-neutral-200 hover:text-white"
+              onClick={(e) => {
+                goToSection(item.href);
+                e.currentTarget.blur();
+              }}
+              className="text-left text-neutral-200 hover:text-white outline-none focus:outline-none focus-visible:outline-none"
             >
               {item.label}
             </button>
           ))}
           <button
             type="button"
-            onClick={() => goToSection("#kontakt")}
-            className={`mt-2 w-full ${CTA_CLASS}`}
+            onClick={(e) => {
+              goToSection("#kontakt");
+              e.currentTarget.blur();
+            }}
+            className={`mt-2 w-full outline-none focus:outline-none focus-visible:outline-none ${CTA_CLASS}`}
           >
             Umów zajęcia
           </button>
