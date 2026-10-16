@@ -1,27 +1,34 @@
 export type SeoCity = "szczecin" | "police";
 
 export type SeoFaqItem = { q: string; a: string };
+export type SeoTile = { h2: string; text: string };
+export type SeoStep = { number: string; title: string; text: string };
 
 export type SeoLandingContent = {
   city: SeoCity;
+  cityLabel: string;
   cityName: string;
-  cityNameLocative: string; // w Szczecinie / w Policach
+  cityNameLocative: string;
   path: string;
   title: string;
   description: string;
   ogTitle: string;
   ogDescription: string;
   h1: string;
-  intro: string[];
-  sections: Array<{ h2: string; paragraphs: string[] }>;
-  poolsNote?: string;
-  otherCity: { label: string; href: string; sentence: string };
+  lead: string;
+  pills: string[];
+  tiles: SeoTile[];
+  stepsH2: string;
+  steps: SeoStep[];
+  faqH2: string;
   faq: SeoFaqItem[];
+  crossLink: { intro: string; label: string; href: string };
 };
 
 export const SEO_LANDINGS: Record<SeoCity, SeoLandingContent> = {
   szczecin: {
     city: "szczecin",
+    cityLabel: "Szczecin",
     cityName: "Szczecin",
     cityNameLocative: "w Szczecinie",
     path: "/nauka-plywania-szczecin",
@@ -33,71 +40,73 @@ export const SEO_LANDINGS: Record<SeoCity, SeoLandingContent> = {
     ogDescription:
       "Lekcje pływania 1:1 w Szczecinie — nauka dla dorosłych, doskonalenie techniki i trening pod zawody.",
     h1: "Nauka i doskonalenie pływania w Szczecinie",
-    intro: [
-      "Szukasz trenera pływania w Szczecinie? Prowadzę indywidualne lekcje pływania dopasowane do wieku, poziomu i celu — od spokojnego startu w wodzie, przez naukę pływania dla dorosłych, po doskonalenie techniki i przygotowanie pod starty.",
-      "Każdy trening planuję osobno. Tempo, objętość i ćwiczenia zależą od Twojej sprawności. Pracuję z dziećmi, młodzieżą i dorosłymi na obiektach m.in. Floating Arena i SDS. Na basenie stawiam na bezpieczeństwo, prawidłowy oddech i czystą technikę stylów.",
+    lead: "Prowadzę indywidualne treningi pływania 1:1 na szczecińskich basenach (m.in. Floating Arena, SDS). Niezależnie od tego, czy chcesz przełamać lęk przed głęboką wodą, poprawić ekonomię kraula, czy szukasz trenera, który ułoży Ci pływanie pod start w triathlonie lub zawodach open water — pracujemy na konkretnych założeniach, bez chaosu i przypadkowych ćwiczeń.",
+    pills: [
+      "📍 Floating Arena i SDS",
+      "👤 Tylko formuła 1:1",
+      "🎥 Wideoanaliza techniki",
+      "🏊‍♂️ Od podstaw i pod Triathlon",
     ],
-    sections: [
+    tiles: [
       {
-        h2: "Nauka pływania dla dorosłych w Szczecinie",
-        paragraphs: [
-          "Wielu dorosłych zaczyna od zera albo wraca do wody po latach przerwy. Lekcje pływania dla dorosłych prowadzę w spokoju, bez presji grupy — uczymy się leżenia na wodzie, oddechu, podstawowych stylów i pewności w głębszej części basenu.",
-          "Jeśli już pływasz „jako tako”, ale męczy Cię oddech, nieefektywny kraul albo brak regularności, układamy plan pod realny cel: swobodne przepłynięcie dystansu, lepsza kondycja albo start w amatorskich zawodach.",
-        ],
+        h2: "Nauka pływania dla dorosłych i dzieci w Szczecinie",
+        text: "Zaczynasz od zera albo wracasz do wody po latach przerwy? Pracujemy w pełnym komforcie, bez stresu i presji grupy. Krok po kroku opanujesz spokojny wydech do wody, stabilne leżenie na powierzchni i swobodne poruszanie się na głębokim basenie.",
       },
       {
-        h2: "Doskonalenie pływania i poprawa techniki",
-        paragraphs: [
-          "Doskonalenie pływania to precyzyjna korekta techniki, ekonomii ruchu i oddechu. Na treningach łączymy ćwiczenia techniczne z kontrolowaną objętością — tak, by poprawa była widoczna w wodzie, a nie tylko „na sucho”.",
-          "Osobom trenującym sportowo lub pod triathlon pomagam w doskonaleniu stylów, pracy nóg i przygotowaniu pod konkretny dystans. Tam, gdzie ma sens, korzystamy też z wideoanalizy.",
-        ],
+        h2: "Doskonalenie pływania i technika pod Triathlon",
+        text: "Pływasz, ale brakuje Ci tlenu po dwóch długościach basenu? Skupiamy się na biomechanice, wysokim łokciu, rotacji i ekonomii ruchu. Korzystamy z wideoanalizy i układamy treningi tak, żebyś pływał szybciej mniejszym kosztem energetycznym.",
       },
       {
         h2: "Indywidualne lekcje pływania — trener na basenie",
-        paragraphs: [
-          "Zajęcia odbywają się w formule 1:1. Masz pełną uwagę trenera na basenie: korektę na bieżąco, dobór ćwiczeń i jasny plan na kolejne spotkania. To wygodna opcja, gdy zależy Ci na szybkim postępie albo prywatności.",
-          "Pierwszy trening wprowadzający jest w niższej cenie startowej — poznajemy się w wodzie i ustalamy dalszą współpracę bez zobowiązań „w ciemno”.",
-        ],
-      },
-      {
-        h2: "Dla kogo są zajęcia i jak zacząć",
-        paragraphs: [
-          "Pracuję z dziećmi, młodzieżą i dorosłymi — od kompletnych początkujących po osoby doskonalące technikę. Basen w Szczecinie dopasowujemy do dostępności i lokalizacji (m.in. Floating Arena, SDS).",
-          "Napisz lub zadzwoń, podaj wiek, poziom i cel. Ustalamy termin i formę zajęć. Szczegóły programów są w ofercie na stronie głównej.",
-        ],
+        text: "Nie rzucam z brzegu hasła „przepłyń 10 basenów”. Przez cały trening monitoruję Twój ruch i koryguję błędy na bieżąco. Dostajesz konkretny feedback od razu po zatrzymaniu przy ścianie i plan dopasowany dokładnie do Twojej wydolności.",
       },
     ],
-    poolsNote: "Floating Arena, SDS i inne baseny w Szczecinie — dobieramy obiekt do Ciebie.",
-    otherCity: {
-      label: "Police",
-      href: "/nauka-plywania-police",
-      sentence: "Prowadzę też indywidualne lekcje pływania w okolicy Polic.",
-    },
+    stepsH2: "Jak zacząć treningi w Szczecinie?",
+    steps: [
+      {
+        number: "01",
+        title: "Szybki kontakt",
+        text: "Napisz na WhatsApp, SMS lub e-mail. Podaj swój wiek (lub wiek dziecka), obecny poziom w wodzie oraz cel, nad którym chcesz popracować.",
+      },
+      {
+        number: "02",
+        title: "Trening wprowadzający",
+        text: "Spotykamy się na wybranym basenie w Szczecinie (np. Floating Arena lub SDS). Pierwszy trening jest w niższej cenie startowej — sprawdzamy Twój poziom w wodzie.",
+      },
+      {
+        number: "03",
+        title: "Plan działania",
+        text: "Po zajęciach dostajesz ode mnie konkretną ocenę techniczną i propozycję dalszej pracy. Wtedy na spokojnie decydujesz, czy trenujemy regularnie.",
+      },
+    ],
+    faqH2: "Najczęstsze pytania — Szczecin",
     faq: [
       {
-        q: "Czy nauka pływania w Szczecinie jest też dla dorosłych od zera?",
-        a: "Tak. Wielu podopiecznych to dorośli zaczynający od podstaw lub wracający po przerwie. Zaczynamy w bezpiecznym tempie, na odpowiedniej głębokości, z naciskiem na oddech i pewność w wodzie.",
+        q: "Na jakich basenach w Szczecinie odbywają się zajęcia?",
+        a: "Najczęściej trenujemy na pływalniach Floating Arena oraz SDS (Szczeciński Dom Sportu). Możemy też umówić się na innym obiekcie w Szczecinie — lokalizację i godzinę dobieramy do dostępności torów oraz Twojego grafiku.",
+      },
+      {
+        q: "Czy nauka pływania dla dorosłych od zera odbywa się na głębokiej wodzie?",
+        a: "Zaczynamy w warunkach, które dają Ci poczucie bezpieczeństwa. Zanim wejdziemy na głębszą część basenu, opanujesz kontrolę oddechu, balans ciała i pewne leżenie na wodzie przy asekuracji trenera.",
       },
       {
         q: "Czym różni się doskonalenie pływania od zwykłej nauki?",
-        a: "Nauka buduje fundamenty (leżenie, oddech, podstawowe style). Doskonalenie pływania to korekta techniki, ekonomii ruchu i przygotowanie pod konkretny cel — np. dłuższy dystans, zawody lub triathlon.",
+        a: "Nauka buduje fundamenty od podstaw (oswojenie z wodą, oddech, pierwsze style). Doskonalenie to precyzyjna praca nad detalami technicznymi u osób, które już pływają — eliminujemy opory, poprawiamy chwyt wody i przygotowujemy formę pod konkretny dystans lub zawody triathlonowe.",
       },
       {
-        q: "Czy lekcje są indywidualne?",
-        a: "Tak — pracujemy 1:1. Dzięki temu trener na basenie na bieżąco koryguje technikę i dopasowuje plan do Twojego poziomu.",
-      },
-      {
-        q: "Na jakich basenach w Szczecinie są zajęcia?",
-        a: "Najczęściej Floating Arena i SDS, a także inne obiekty w zależności od dostępności i Twojej lokalizacji. Basen ustalamy przy umawianiu pierwszego treningu.",
-      },
-      {
-        q: "Jak umówić pierwszy trening?",
-        a: "Napisz na WhatsApp, SMS lub e-mail — podaj wiek, poziom i cel. Pierwszy trening wprowadzający jest w niższej cenie startowej.",
+        q: "Ile trwa lekcja i czy cena zawiera bilet na basen?",
+        a: "Czas trwania treningu oraz aktualne stawki (w tym cenę pierwszego treningu wprowadzającego) znajdziesz w zakładce Oferta na stronie głównej. Wejście na basen opłacane jest osobno w kasie obiektu.",
       },
     ],
+    crossLink: {
+      intro: "Prowadzę też indywidualne lekcje pływania w Policach:",
+      label: "Nauka pływania Police",
+      href: "/nauka-plywania-police",
+    },
   },
   police: {
     city: "police",
+    cityLabel: "Police",
     cityName: "Police",
     cityNameLocative: "w Policach",
     path: "/nauka-plywania-police",
@@ -109,67 +118,69 @@ export const SEO_LANDINGS: Record<SeoCity, SeoLandingContent> = {
     ogDescription:
       "Lekcje pływania 1:1 w Policach — nauka dla dorosłych, doskonalenie techniki i trening pod Twój cel.",
     h1: "Nauka i doskonalenie pływania w Policach",
-    intro: [
-      "W Policach oferuję spersonalizowane lekcje pływania w kameralnej formule 1:1. To dobry wybór zarówno przy nauce pływania dla dorosłych i dzieci od zera, jak i przy doskonaleniu stylu, oddechu oraz czasów.",
-      "Na treningach łączymy technikę z budowaniem pewności w wodzie. Jeśli celem są zawody lub triathlon, układam plan pod wymagania startowe i Twój harmonogram — bez chaosu i przypadkowych ćwiczeń.",
+    lead: "Szukasz trenera pływania na miejscu, bez konieczności tracenia czasu na dojazdy do Szczecina? W Policach prowadzę indywidualne zajęcia 1:1 dla dorosłych, dzieci i młodzieży. Od pierwszego oswojenia z wodą, przez korektę techniki kraula i pozostałych stylów, aż po poukładane przygotowanie pod zawody i triathlon.",
+    pills: [
+      "📍 Police i okolice",
+      "👤 Indywidualna formuła 1:1",
+      "🎯 Od podstaw i korekta stylu",
+      "🏆 Przygotowanie pod zawody",
     ],
-    sections: [
+    tiles: [
       {
-        h2: "Nauka pływania dla dorosłych w Policach",
-        paragraphs: [
-          "Dorosłym, którzy dopiero zaczynają lub boją się wody, proponuję spokojną naukę pływania: oswajanie z basenem, oddech, ułożenie ciała i pierwsze metry bez stresu grupy.",
-          "Jeśli już pływasz, ale chcesz pływać lepiej i efektywniej, skupiamy się na nawykach, które realnie poprawiają komfort i dystans — zamiast „więcej tego samego, tylko mocniej”.",
-        ],
+        h2: "Nauka pływania dla dorosłych i dzieci w Policach",
+        text: "Spokojne wejście do wody dla osób początkujących oraz tych z blokadą przed głębokością. Budujemy pewność w wodzie, uczymy się bezwysiłkowego wydechu i prawidłowej pozycji ciała — we własnym tempie, bez stresu grupy.",
       },
       {
-        h2: "Doskonalenie pływania i technika",
-        paragraphs: [
-          "Doskonalenie pływania w Policach to praca nad techniką kraula i innych stylów, ekonomią ruchu oraz oddechem. Trening jest indywidualny, więc korekta dzieje się od razu w wodzie.",
-          "Osobom przygotowującym się do zawodów lub triathlonu pomagam ułożyć sensowny plan: technika, objętość i regeneracja dopasowane do celu.",
-        ],
+        h2: "Doskonalenie pływania i ekonomia techniki",
+        text: "Zamiast pływać „więcej tego samego, tylko mocniej”, zmieniamy nawyki ruchowe. Eliminujemy błędy, które Cię hamują, poprawiamy chwyt wody i ustawiamy rytm oddechowy pod dłuższe dystanse oraz starty w triathlonie.",
       },
       {
-        h2: "Indywidualne lekcje pływania u trenera",
-        paragraphs: [
-          "Zajęcia 1:1 oznaczają pełną uwagę trenera na basenie. To wygodne, gdy zależy Ci na prywatności, szybkim feedbacku i planie szytym na miarę — nie na programie „dla całej grupy”.",
-          "Pierwszy trening wprowadzający jest w niższej cenie startowej. Sprawdzamy poziom na żywo i dopiero potem decydujesz o dalszej współpracy.",
-        ],
-      },
-      {
-        h2: "Jak zacząć zajęcia w Policach",
-        paragraphs: [
-          "Napisz lub zadzwoń, podaj wiek, poziom i cel. Ustalamy termin oraz basen w Policach lub okolicy. Szczegóły kierunków treningu znajdziesz w ofercie na stronie głównej.",
-          "Prowadzę też zajęcia w Szczecinie — jeśli wygodniej Ci dojechać do Floating Arena lub SDS, dopasujemy lokalizację.",
-        ],
+        h2: "Indywidualne lekcje pływania 1:1 z trenerem",
+        text: "Zajęcia 1:1 oznaczają 100% mojej uwagi na Twojej technice. Każde ćwiczenie dobieram na żywo pod to, co w danym momencie dzieje się w wodzie, dzięki czemu robisz postępy znacznie szybciej niż w grupie zorganizowanej.",
       },
     ],
-    otherCity: {
-      label: "Szczecin",
-      href: "/nauka-plywania-szczecin",
-      sentence: "Prowadzę też indywidualne lekcje pływania w Szczecinie.",
-    },
+    stepsH2: "Jak zacząć zajęcia w Policach?",
+    steps: [
+      {
+        number: "01",
+        title: "Napisz lub zadzwoń",
+        text: "Skontaktuj się przez WhatsApp, SMS lub e-mail. Napisz, dla kogo mają być zajęcia, jaki jest obecny poziom i nad czym zależy Ci najbardziej.",
+      },
+      {
+        number: "02",
+        title: "Pierwszy trening (niższa cena)",
+        text: "Umawiamy dogodny termin na basenie w Policach. Pierwsze spotkanie wprowadzające jest w niższej cenie startowej — bez zobowiązań sprawdzamy Twój poziom w wodzie.",
+      },
+      {
+        number: "03",
+        title: "Decyzja i dalsza współpraca",
+        text: "Po pierwszym treningu wiesz dokładnie, jakie błędy warto wyeliminować i jak będzie wyglądać nasza praca. Wtedy decydujesz o kolejnych terminach.",
+      },
+    ],
+    faqH2: "Najczęstsze pytania — Police",
     faq: [
       {
-        q: "Czy w Policach są lekcje pływania dla dorosłych?",
-        a: "Tak. Prowadzę naukę pływania dla dorosłych od podstaw oraz doskonalenie techniki dla osób, które już pływają i chcą poprawić styl, oddech lub dystans.",
+        q: "Dla kogo przeznaczone są zajęcia w Policach?",
+        a: "Trenuję z dziećmi, młodzieżą oraz osobami dorosłymi. Prowadzę zarówno osoby zaczynające całkowicie od zera, jak i pływaków amatorów oraz triathlonistów szukających poprawy czasów i techniki.",
       },
       {
-        q: "Czy zajęcia są indywidualne?",
-        a: "Tak — formuła 1:1. Trener na basenie koryguje technikę na bieżąco i dopasowuje plan do Twojego celu.",
+        q: "Czy mogę elastycznie dopasować lokalizację między Policami a Szczecinem?",
+        a: "Tak. Jeśli w wybrane dni tygodnia wygodniej Ci podjechać na trening do Szczecina (np. przy okazji pracy lub szkoły na Floating Arenę czy SDS), możemy elastycznie łączyć obie lokalizacje.",
       },
       {
-        q: "Czym jest doskonalenie pływania?",
-        a: "To trening techniczny: poprawa ekonomii ruchu, oddechu i skuteczności stylów. Często wybierają go osoby po kursie podstawowym lub trenujące amatorsko / pod triathlon.",
+        q: "Co zabrać na pierwszy trening wprowadzający?",
+        a: "Wystarczy wygodny strój pływacki, okularki, czepek oraz klapki i ręcznik. Jeśli masz własny sprzęt treningowy (np. płetwy, łapki czy rurkę czołową), możesz go zabrać, ale na pierwszym spotkaniu skupiamy się przede wszystkim na ocenie naturalnego ruchu w wodzie.",
       },
       {
-        q: "Dla kogo są zajęcia w Policach?",
-        a: "Dla dzieci, młodzieży i dorosłych — od początkujących po osoby doskonalące technikę. Basen i termin ustalamy indywidualnie.",
-      },
-      {
-        q: "Jak umówić pierwszy trening w Policach?",
-        a: "Skontaktuj się przez WhatsApp, SMS lub e-mail. Podaj wiek, poziom i cel — odpiszę z propozycją terminu. Pierwszy trening jest w niższej cenie startowej.",
+        q: "Jak szybko zobaczę efekty indywidualnych lekcji?",
+        a: "Przy pracy 1:1 pierwsze wyraźne zmiany — szczególnie w ułożeniu ciała na wodzie i swobodzie oddechu — odczujesz już na pierwszych spotkaniach, bo każdy błąd korygujemy od razu po przepłynięciu odcinka.",
       },
     ],
+    crossLink: {
+      intro: "Prowadzę też indywidualne lekcje pływania w Szczecinie:",
+      label: "Nauka pływania Szczecin",
+      href: "/nauka-plywania-szczecin",
+    },
   },
 };
 
