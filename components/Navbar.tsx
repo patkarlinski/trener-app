@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { scrollToSectionId } from "@/lib/scrollToSection";
 
 /** Menu one-page — ten sam wygląd na wszystkich stronach. */
 const CTA_CLASS =
@@ -57,21 +58,12 @@ export default function Navbar() {
       return;
     }
 
-    // Na mobile najpierw zamknij menu — inaczej getBoundingClientRect liczy
-    // pozycję przy otwartym panelu i po zamknięciu lądujemy za wysoko.
-    const runScroll = () => {
-      const el = document.getElementById(id);
-      if (!el) return;
-      const header = document.querySelector("header");
-      const headerH = header?.getBoundingClientRect().height ?? 76;
-      const gap = window.matchMedia("(min-width: 768px)").matches ? 24 : 20;
-      const top =
-        el.getBoundingClientRect().top + window.scrollY - headerH - gap;
-      window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
-    };
+    // Na mobile najpierw zamknij menu — inaczej pozycja jest liczona
+    // przy otwartym panelu i po zamknięciu lądujemy za wysoko pod nav.
+    const runScroll = () => scrollToSectionId(id);
 
     if (wasMenuOpen) {
-      window.setTimeout(runScroll, 80);
+      window.setTimeout(runScroll, 180);
     } else {
       runScroll();
     }

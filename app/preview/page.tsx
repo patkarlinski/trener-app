@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { scrollToSectionId } from "@/lib/scrollToSection";
 
 const FAQ = [
   {
@@ -105,30 +106,20 @@ export default function PreviewPage() {
     };
   }, [contactSheetOpen]);
 
-  function scrollToId(id: string) {
-    const el = document.getElementById(id);
-    if (!el) return;
-    const header = document.querySelector("header");
-    const headerH = header?.getBoundingClientRect().height ?? 76;
-    const gap = window.matchMedia("(min-width: 768px)").matches ? 24 : 20;
-    const top = el.getBoundingClientRect().top + window.scrollY - headerH - gap;
-    window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
-  }
-
   useEffect(() => {
     const hash = window.location.hash.replace("#", "");
     if (!hash) return;
-    const t = window.setTimeout(() => scrollToId(hash), 100);
+    const t = window.setTimeout(() => scrollToSectionId(hash), 120);
     return () => window.clearTimeout(t);
   }, []);
 
   function scrollTo(href: string) {
-    scrollToId(href.replace("#", ""));
+    scrollToSectionId(href.replace("#", ""));
   }
 
   function bookLesson(goal: ContactGoal) {
     setSelectedGoal(goal);
-    requestAnimationFrame(() => scrollToId("kontakt"));
+    requestAnimationFrame(() => scrollToSectionId("kontakt"));
   }
 
   const message = buildContactMessage(selectedGoal);
@@ -216,7 +207,7 @@ export default function PreviewPage() {
       </section>
 
       {/* 2. O mnie */}
-      <section id="about" className="scroll-mt-36 py-24 md:scroll-mt-28 md:py-32">
+      <section id="about" className="scroll-mt-44 py-24 md:scroll-mt-28 md:py-32">
         <div className="max-w-6xl mx-auto px-5 grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
           <div className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.45)]">
             <Image
@@ -274,7 +265,7 @@ export default function PreviewPage() {
       </section>
 
       {/* 3. Oferta */}
-      <section id="oferta" className="scroll-mt-36 bg-[#0c1016] py-24 md:scroll-mt-28 md:py-32">
+      <section id="oferta" className="scroll-mt-44 bg-[#0c1016] py-24 md:scroll-mt-28 md:py-32">
         <div className="max-w-6xl mx-auto px-5">
           <p className="text-sm tracking-[0.14em] uppercase text-sky-300/80 mb-4 font-medium">
             Oferta
@@ -479,7 +470,7 @@ export default function PreviewPage() {
       </section>
 
       {/* 5. FAQ */}
-      <section id="faq" className="scroll-mt-36 py-24 md:scroll-mt-28 md:py-32">
+      <section id="faq" className="scroll-mt-44 py-24 md:scroll-mt-28 md:py-32">
         <div className="max-w-3xl mx-auto px-5">
           <p className="text-sm tracking-[0.14em] uppercase text-sky-300/80 mb-4 font-medium">
             FAQ
