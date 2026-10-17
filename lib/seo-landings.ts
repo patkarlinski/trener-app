@@ -38,12 +38,12 @@ export const SEO_LANDINGS: Record<SeoCity, SeoLandingContent> = {
       "Nauka i doskonalenie pływania w Szczecinie. Indywidualne lekcje pływania dla dorosłych i dzieci — trener na basenie, technika, triathlon. Umów pierwszy trening.",
     ogTitle: "Nauka pływania Szczecin | Indywidualne lekcje | Patryk Karliński",
     ogDescription:
-      "Lekcje pływania 1:1 w Szczecinie — nauka dla dorosłych, doskonalenie techniki i trening pod zawody.",
+      "Lekcje pływania 1:1 lub w parze w Szczecinie — nauka dla dorosłych, doskonalenie techniki i trening pod zawody.",
     h1: "Nauka i doskonalenie pływania w Szczecinie",
-    lead: "Prowadzę indywidualne treningi pływania 1:1 na szczecińskich basenach (m.in. Floating Arena, SDS). Niezależnie od tego, czy chcesz przełamać lęk przed głęboką wodą, poprawić ekonomię kraula, czy szukasz trenera, który ułoży Ci pływanie pod start w triathlonie lub zawodach open water — pracujemy na konkretnych założeniach, bez chaosu i przypadkowych ćwiczeń.",
+    lead: "Prowadzę indywidualne treningi pływania (1:1 lub w parze, maksymalnie 2 osoby) na szczecińskich basenach (m.in. Floating Arena, SDS). Niezależnie od tego, czy chcesz przełamać lęk przed głęboką wodą, poprawić ekonomię kraula, czy szukasz trenera, który ułoży Ci pływanie pod start w triathlonie lub zawodach open water — pracujemy na konkretnych założeniach, bez chaosu i przypadkowych ćwiczeń.",
     pills: [
       "📍 Floating Arena i SDS",
-      "👤 Tylko formuła 1:1",
+      "👤 Formuła 1:1 lub w parze (max 1:2)",
       "🎥 Wideoanaliza techniki",
       "🏊‍♂️ Od podstaw i pod Triathlon",
     ],
@@ -116,12 +116,12 @@ export const SEO_LANDINGS: Record<SeoCity, SeoLandingContent> = {
       "Nauka i doskonalenie pływania w Policach. Indywidualne lekcje pływania dla dorosłych i dzieci — trener na basenie, technika, triathlon. Umów pierwszy trening.",
     ogTitle: "Nauka pływania Police | Indywidualne lekcje | Patryk Karliński",
     ogDescription:
-      "Lekcje pływania 1:1 w Policach — nauka dla dorosłych, doskonalenie techniki i trening pod Twój cel.",
+      "Lekcje pływania 1:1 lub w parze w Policach — nauka dla dorosłych, doskonalenie techniki i trening pod Twój cel.",
     h1: "Nauka i doskonalenie pływania w Policach",
-    lead: "Szukasz trenera pływania na miejscu, bez konieczności tracenia czasu na dojazdy do Szczecina? W Policach prowadzę indywidualne zajęcia 1:1 dla dorosłych, dzieci i młodzieży. Od pierwszego oswojenia z wodą, przez korektę techniki kraula i pozostałych stylów, aż po poukładane przygotowanie pod zawody i triathlon.",
+    lead: "Szukasz trenera pływania na miejscu, bez konieczności tracenia czasu na dojazdy do Szczecina? W Policach prowadzę indywidualne zajęcia 1:1 lub w parze (maksymalnie 2 osoby) dla dorosłych, dzieci i młodzieży. Od pierwszego oswojenia z wodą, przez korektę techniki kraula i pozostałych stylów, aż po poukładane przygotowanie pod zawody i triathlon.",
     pills: [
       "📍 Police i okolice",
-      "👤 Indywidualna formuła 1:1",
+      "👤 Indywidualnie lub w parze (max 1:2)",
       "🎯 Od podstaw i korekta stylu",
       "🏆 Przygotowanie pod zawody",
     ],
@@ -135,8 +135,8 @@ export const SEO_LANDINGS: Record<SeoCity, SeoLandingContent> = {
         text: "Zamiast pływać „więcej tego samego, tylko mocniej”, zmieniamy nawyki ruchowe. Eliminujemy błędy, które Cię hamują, poprawiamy chwyt wody i ustawiamy rytm oddechowy pod dłuższe dystanse oraz starty w triathlonie.",
       },
       {
-        h2: "Indywidualne lekcje pływania 1:1 z trenerem",
-        text: "Zajęcia 1:1 oznaczają 100% mojej uwagi na Twojej technice. Każde ćwiczenie dobieram na żywo pod to, co w danym momencie dzieje się w wodzie, dzięki czemu robisz postępy znacznie szybciej niż w grupie zorganizowanej.",
+        h2: "Indywidualne lekcje pływania z trenerem — 1:1 lub 1:2",
+        text: "Pracuję maksymalnie z dwiema osobami naraz, więc przez cały trening moja uwaga jest na Twojej technice. Każde ćwiczenie dobieram na żywo pod to, co w danym momencie dzieje się w wodzie, dzięki czemu robisz postępy znacznie szybciej niż w grupie zorganizowanej.",
       },
     ],
     stepsH2: "Jak zacząć zajęcia w Policach?",
@@ -173,7 +173,7 @@ export const SEO_LANDINGS: Record<SeoCity, SeoLandingContent> = {
       },
       {
         q: "Jak szybko zobaczę efekty indywidualnych lekcji?",
-        a: "Przy pracy 1:1 pierwsze wyraźne zmiany — szczególnie w ułożeniu ciała na wodzie i swobodzie oddechu — odczujesz już na pierwszych spotkaniach, bo każdy błąd korygujemy od razu po przepłynięciu odcinka.",
+        a: "Przy pracy 1:1 lub w parze pierwsze wyraźne zmiany — szczególnie w ułożeniu ciała na wodzie i swobodzie oddechu — odczujesz już na pierwszych spotkaniach, bo każdy błąd korygujemy od razu po przepłynięciu odcinka.",
       },
     ],
     crossLink: {

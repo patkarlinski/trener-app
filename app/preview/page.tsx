@@ -143,7 +143,7 @@ export default function PreviewPage() {
   return (
     <main className="bg-[#07090c] text-neutral-100 text-lg min-h-screen">
       {/* 1. Hero */}
-      <section className="relative flex min-h-[92vh] items-end overflow-hidden pb-12 pt-32 md:pb-20 md:pt-36">
+      <section className="relative flex min-h-[92vh] items-end overflow-hidden pb-6 pt-32 md:pb-20 md:pt-36">
         <Image
           src="/banner.webp"
           alt="Trening pływacki — Patryk Karliński"
@@ -180,25 +180,25 @@ export default function PreviewPage() {
             <br />
             Karliński
           </h1>
-          <p className="mb-2 max-w-xl text-lg font-medium leading-snug text-zinc-100 md:mb-0 md:mt-6 md:text-2xl md:font-normal md:leading-relaxed md:text-neutral-200">
+          <p className="mb-2 max-w-xl text-xl font-medium leading-snug text-zinc-100 md:mb-0 md:mt-6 md:text-2xl md:font-normal md:leading-relaxed md:text-neutral-200">
             Nauka i doskonalenie pływania. Trening personalny.
           </p>
-          <p className="mb-6 max-w-lg text-sm leading-relaxed text-zinc-400 md:mb-0 md:mt-3 md:text-lg md:text-neutral-400">
+          <p className="mb-6 max-w-lg text-base leading-relaxed text-zinc-400 md:mb-0 md:mt-3 md:text-lg md:text-neutral-400">
             Od pierwszego wejścia do wody po starty w zawodach — jeden trener,
             jasny plan, realny postęp.
           </p>
-          <div className="flex flex-col gap-2.5 pb-24 md:mt-10 md:flex-row md:flex-wrap md:gap-4 md:pb-0">
+          <div className="flex flex-col gap-2.5 pb-16 md:mt-10 md:flex-row md:flex-wrap md:gap-4 md:pb-0">
             <button
               type="button"
               onClick={() => scrollTo("#kontakt")}
-              className="cursor-pointer w-full rounded-full bg-sky-400 px-8 py-3.5 text-sm font-semibold tracking-wide text-neutral-950 transition-colors hover:bg-sky-300 md:w-auto md:text-lg"
+              className="cursor-pointer w-full rounded-full bg-sky-400 px-8 py-3.5 text-base font-semibold tracking-wide text-neutral-950 transition-colors hover:bg-sky-300 md:w-auto md:text-lg"
             >
               Umów zajęcia
             </button>
             <button
               type="button"
               onClick={() => scrollTo("#oferta")}
-              className="cursor-pointer w-full rounded-full border border-white/25 px-8 py-3.5 text-sm font-semibold text-neutral-200 transition-colors hover:border-white/50 hover:bg-white/5 md:w-auto md:text-lg md:font-normal"
+              className="cursor-pointer w-full rounded-full border border-white/25 px-8 py-3.5 text-base font-semibold text-neutral-200 transition-colors hover:border-white/50 hover:bg-white/5 md:w-auto md:text-lg md:font-normal"
             >
               Oferta
             </button>
@@ -207,7 +207,7 @@ export default function PreviewPage() {
       </section>
 
       {/* 2. O mnie */}
-      <section id="about" className="scroll-mt-[4.75rem] py-24 md:py-32">
+      <section id="about" className="scroll-mt-[4.75rem] pt-10 pb-24 md:py-32">
         <div className="max-w-6xl mx-auto px-5 grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
           <div className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.45)]">
             <Image
@@ -236,23 +236,8 @@ export default function PreviewPage() {
               Nazywam się Patryk. Jestem medalistą Mistrzostw Świata i Europy
               oraz licencjonowanym trenerem. Prowadzę indywidualne lekcje
               pływania i treningi personalne dla dzieci oraz dorosłych — od
-              nauki pływania dla dorosłych i przełamania lęku przed wodą, przez
-              doskonalenie techniki, aż po poprawę czasów i budowanie formy na
-              lądzie. Więcej o zajęciach lokalnie:{" "}
-              <Link
-                href="/nauka-plywania-szczecin"
-                className="text-sky-400 underline underline-offset-4 hover:text-sky-300"
-              >
-                nauka pływania Szczecin
-              </Link>{" "}
-              i{" "}
-              <Link
-                href="/nauka-plywania-police"
-                className="text-sky-400 underline underline-offset-4 hover:text-sky-300"
-              >
-                nauka pływania Police
-              </Link>
-              .
+              przełamania lęku przed wodą, przez doskonalenie techniki, aż po
+              poprawę czasów i budowanie formy na lądzie.
             </p>
             <ul className="list-none space-y-3 text-neutral-300 pl-0">
               {[
