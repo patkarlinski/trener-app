@@ -484,7 +484,7 @@ export default function PreviewPage() {
             </span>
             <span className="min-w-0 flex-1">
               <span className="block text-base font-semibold text-white sm:text-lg">
-                Zobacz, jak trenujemy — Instagram
+                Odwiedź mnie na Instagramie
               </span>
               <span className="block text-sm text-neutral-400">
                 {INSTAGRAM_HANDLE} · zdjęcia i wideo z zajęć
