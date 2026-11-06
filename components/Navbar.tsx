@@ -217,7 +217,7 @@ export default function Navbar() {
           />
           <div className="relative flex min-h-full flex-col px-5 pb-[max(1.5rem,env(safe-area-inset-bottom))] pt-[calc(4.75rem+1.5rem)]">
             <ul className="flex flex-col">
-              {NAV.map((item, i) => (
+              {NAV.map((item) => (
                 <li key={item.href} className="border-b border-white/10 first:border-t">
                   <button
                     type="button"
@@ -225,26 +225,15 @@ export default function Navbar() {
                       goToSection(item.href);
                       e.currentTarget.blur();
                     }}
-                    className="group flex w-full items-center justify-between py-5 text-left outline-none focus:outline-none focus-visible:outline-none"
+                    className="group flex w-full items-center justify-center py-5 outline-none focus:outline-none focus-visible:outline-none"
                   >
-                    <span className="flex items-baseline gap-4">
-                      <span className="w-6 text-sm font-medium tabular-nums text-sky-400/70">
-                        {String(i + 1).padStart(2, "0")}
-                      </span>
-                      <span
-                        className="text-3xl font-bold tracking-tight text-white transition-colors group-active:text-sky-300"
-                        style={{
-                          fontFamily: "var(--font-preview-display), sans-serif",
-                        }}
-                      >
-                        {item.label}
-                      </span>
-                    </span>
                     <span
-                      aria-hidden
-                      className="text-xl text-neutral-500 transition-transform group-active:translate-x-1 group-active:text-sky-300"
+                      className="text-3xl font-bold tracking-tight text-white transition-colors group-active:text-sky-300"
+                      style={{
+                        fontFamily: "var(--font-preview-display), sans-serif",
+                      }}
                     >
-                      →
+                      {item.label}
                     </span>
                   </button>
                 </li>
