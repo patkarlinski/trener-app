@@ -5,7 +5,13 @@ import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { scrollToSectionId } from "@/lib/scrollToSection";
 import { useMounted } from "@/lib/useMounted";
-import { CTA_PRIMARY_FX, INSTAGRAM_HANDLE, INSTAGRAM_URL } from "@/lib/cta";
+import {
+  CTA_PRIMARY_FX,
+  INSTAGRAM_HANDLE,
+  INSTAGRAM_URL,
+  PHONE_DISPLAY,
+  PHONE_E164,
+} from "@/lib/cta";
 import InstagramIcon from "@/components/InstagramIcon";
 
 /** Menu one-page — ten sam wygląd na wszystkich stronach. */
@@ -39,6 +45,28 @@ export default function Navbar() {
   // SSR i pierwsze malowanie: zawsze solidne tło — pathname w root layout
   // bywa puste przy SSR i powodowało mismatch (transparent vs bg-[#07090c]).
   const solidNav = !ready || scrolled || !onOnePager;
+
+  // Otwarte menu: blokada scrolla tła, zamknięcie klawiszem Esc
+  // i automatycznie po przejściu na układ desktopowy.
+  useEffect(() => {
+    if (!menuOpen) return;
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    function onKey(e: KeyboardEvent) {
+      if (e.key === "Escape") setMenuOpen(false);
+    }
+    function onResize() {
+      if (window.innerWidth >= 1024) setMenuOpen(false);
+    }
+    window.addEventListener("keydown", onKey);
+    window.addEventListener("resize", onResize);
+    return () => {
+      document.body.style.overflow = prevOverflow;
+      window.removeEventListener("keydown", onKey);
+      window.removeEventListener("resize", onResize);
+    };
+  }, [menuOpen]);
 
   useEffect(() => {
     function handleScroll() {
@@ -80,11 +108,11 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 z-50 w-full max-w-[100vw] transition-colors duration-300 ${
-        solidNav ? "bg-[#07090c]" : "bg-transparent"
+      className={`fixed top-0 left-0 z-[60] w-full max-w-[100vw] transition-colors duration-300 ${
+        solidNav || menuOpen ? "bg-[#07090c]" : "bg-transparent"
       }`}
     >
-      <nav className="mx-auto w-full max-w-6xl px-5 h-[4.75rem] flex items-center justify-between gap-4 text-white box-border">
+      <nav className="relative z-10 mx-auto w-full max-w-6xl px-5 h-[4.75rem] flex items-center justify-between gap-4 text-white box-border">
         <Link
           href={MAIN}
           onClick={goHome}
@@ -143,13 +171,18 @@ export default function Navbar() {
             setMenuOpen((v) => !v);
             e.currentTarget.blur();
           }}
-          className="lg:hidden flex h-11 w-11 shrink-0 items-center justify-center outline-none focus:outline-none focus-visible:outline-none"
+          className={`lg:hidden flex h-11 w-11 shrink-0 items-center justify-center outline-none focus:outline-none focus-visible:outline-none transition-all duration-200 ${
+            menuOpen
+              ? "rounded-xl border border-sky-400/70 bg-sky-400/10 shadow-[0_0_18px_rgba(56,189,248,0.35)]"
+              : ""
+          }`}
           aria-label={menuOpen ? "Zamknij menu" : "Otwórz menu"}
           aria-expanded={menuOpen}
+          aria-controls="mobile-menu"
         >
           {menuOpen ? (
             <svg
-              className="h-6 w-6 text-white"
+              className="h-6 w-6 text-sky-300"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
@@ -170,43 +203,103 @@ export default function Navbar() {
       </nav>
 
       {menuOpen && (
-        <div className="lg:hidden border-t border-white/5 bg-[#07090c] px-5 py-6 flex flex-col gap-5 text-lg font-medium tracking-[0.08em] uppercase">
-          {NAV.map((item) => (
-            <button
-              key={item.href}
-              type="button"
-              onClick={(e) => {
-                goToSection(item.href);
-                e.currentTarget.blur();
-              }}
-              className="text-left text-neutral-200 hover:text-white outline-none focus:outline-none focus-visible:outline-none"
-            >
-              {item.label}
-            </button>
-          ))}
-          <button
-            type="button"
-            onClick={(e) => {
-              goToSection("#kontakt");
-              e.currentTarget.blur();
-            }}
-            className={`mt-2 w-full outline-none focus:outline-none focus-visible:outline-none ${CTA_CLASS}`}
-          >
-            Umów zajęcia
-          </button>
-          <a
-            href={INSTAGRAM_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => setMenuOpen(false)}
-            className="flex items-center justify-center gap-2.5 rounded-full border border-white/15 px-5 py-3 text-base normal-case tracking-normal text-neutral-200 transition-colors hover:border-sky-400/60 hover:text-sky-300"
-          >
-            <InstagramIcon className="h-5 w-5" />
-            <span>
-              Instagram{" "}
-              <span className="text-neutral-400">{INSTAGRAM_HANDLE}</span>
-            </span>
-          </a>
+        <div
+          id="mobile-menu"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Menu"
+          className="mobile-menu-in fixed inset-0 z-0 overflow-y-auto bg-[#07090c] lg:hidden"
+        >
+          {/* Poświata w tle — ten sam sky-blue co akcenty strony */}
+          <div
+            className="pointer-events-none absolute inset-x-0 top-0 h-[28rem] bg-[radial-gradient(ellipse_at_top,_rgba(56,189,248,0.16),_transparent_65%)]"
+            aria-hidden
+          />
+          <div className="relative flex min-h-full flex-col px-5 pb-[max(1.5rem,env(safe-area-inset-bottom))] pt-[calc(4.75rem+1.5rem)]">
+            <ul className="flex flex-col">
+              {NAV.map((item, i) => (
+                <li key={item.href} className="border-b border-white/10 first:border-t">
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      goToSection(item.href);
+                      e.currentTarget.blur();
+                    }}
+                    className="group flex w-full items-center justify-between py-5 text-left outline-none focus:outline-none focus-visible:outline-none"
+                  >
+                    <span className="flex items-baseline gap-4">
+                      <span className="w-6 text-sm font-medium tabular-nums text-sky-400/70">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <span
+                        className="text-3xl font-bold tracking-tight text-white transition-colors group-active:text-sky-300"
+                        style={{
+                          fontFamily: "var(--font-preview-display), sans-serif",
+                        }}
+                      >
+                        {item.label}
+                      </span>
+                    </span>
+                    <span
+                      aria-hidden
+                      className="text-xl text-neutral-500 transition-transform group-active:translate-x-1 group-active:text-sky-300"
+                    >
+                      →
+                    </span>
+                  </button>
+                </li>
+              ))}
+            </ul>
+
+            <div className="mt-auto flex flex-col gap-3 pt-10">
+              <button
+                type="button"
+                onClick={(e) => {
+                  goToSection("#kontakt");
+                  e.currentTarget.blur();
+                }}
+                className={`w-full py-4 text-lg outline-none focus:outline-none focus-visible:outline-none ${CTA_CLASS}`}
+              >
+                Umów pierwszy trening
+              </button>
+
+              <div className="grid grid-cols-2 gap-3">
+                <a
+                  href={INSTAGRAM_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setMenuOpen(false)}
+                  className="flex items-center justify-center gap-2 rounded-2xl border border-white/15 bg-white/[0.03] px-3 py-3.5 text-sm font-medium text-neutral-100 transition-colors active:border-sky-400/60 active:text-sky-300"
+                >
+                  <InstagramIcon className="h-5 w-5 text-sky-300" />
+                  Instagram
+                </a>
+                <a
+                  href={`tel:+${PHONE_E164}`}
+                  onClick={() => setMenuOpen(false)}
+                  className="flex items-center justify-center gap-2 rounded-2xl border border-white/15 bg-white/[0.03] px-3 py-3.5 text-sm font-medium text-neutral-100 transition-colors active:border-sky-400/60 active:text-sky-300"
+                >
+                  <svg
+                    className="h-5 w-5 text-sky-300"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    viewBox="0 0 24 24"
+                    aria-hidden
+                  >
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                  </svg>
+                  {PHONE_DISPLAY}
+                </a>
+              </div>
+
+              <p className="pt-1 text-center text-xs text-neutral-500">
+                Szczecin · Police · {INSTAGRAM_HANDLE}
+              </p>
+            </div>
+          </div>
         </div>
       )}
     </header>

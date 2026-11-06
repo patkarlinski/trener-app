@@ -8,5 +8,8 @@ export const CTA_PRIMARY_FX =
 export const CTA_SECONDARY_FX =
   "transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98]";
 
+export const PHONE_E164 = "48511258922";
+export const PHONE_DISPLAY = "511 258 922";
+
 export const INSTAGRAM_URL = "https://www.instagram.com/karlinski.patryk";
 export const INSTAGRAM_HANDLE = "@karlinski.patryk";
