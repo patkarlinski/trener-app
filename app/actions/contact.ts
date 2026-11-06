@@ -22,7 +22,7 @@ export async function sendEmail(formData: FormData) {
     });
 
     return { success: "Wysłano pomyślnie!" };
-  } catch (err) {
+  } catch {
     return { error: "Coś poszło nie tak." };
   }
 }

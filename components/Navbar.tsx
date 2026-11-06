@@ -4,10 +4,12 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { scrollToSectionId } from "@/lib/scrollToSection";
+import { useMounted } from "@/lib/useMounted";
+import { CTA_PRIMARY_FX, INSTAGRAM_HANDLE, INSTAGRAM_URL } from "@/lib/cta";
+import InstagramIcon from "@/components/InstagramIcon";
 
 /** Menu one-page — ten sam wygląd na wszystkich stronach. */
-const CTA_CLASS =
-  "cursor-pointer px-6 py-3 rounded-full bg-sky-400 text-neutral-950 text-base font-semibold tracking-wide hover:bg-sky-300 transition-colors";
+const CTA_CLASS = `cursor-pointer px-6 py-3 rounded-full bg-sky-400 text-neutral-950 text-base font-semibold tracking-wide ${CTA_PRIMARY_FX}`;
 
 const MAIN = "/";
 
@@ -24,16 +26,19 @@ export default function Navbar() {
 
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [ready, setReady] = useState(false);
+  const [prevPathname, setPrevPathname] = useState(pathname);
+  const ready = useMounted();
+
+  // Zamknij menu po zmianie ścieżki (wzorzec „adjust state during render").
+  if (prevPathname !== pathname) {
+    setPrevPathname(pathname);
+    setMenuOpen(false);
+  }
 
   const onOnePager = pathname === MAIN;
   // SSR i pierwsze malowanie: zawsze solidne tło — pathname w root layout
   // bywa puste przy SSR i powodowało mismatch (transparent vs bg-[#07090c]).
   const solidNav = !ready || scrolled || !onOnePager;
-
-  useEffect(() => {
-    setReady(true);
-  }, []);
 
   useEffect(() => {
     function handleScroll() {
@@ -43,10 +48,6 @@ export default function Navbar() {
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  useEffect(() => {
-    setMenuOpen(false);
-  }, [pathname]);
 
   function goToSection(hash: string) {
     const id = hash.replace("#", "");
@@ -114,13 +115,23 @@ export default function Navbar() {
               {item.label}
             </button>
           ))}
+          <a
+            href={INSTAGRAM_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`Instagram ${INSTAGRAM_HANDLE}`}
+            title={`Instagram ${INSTAGRAM_HANDLE}`}
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-neutral-200 transition-colors hover:border-sky-400/60 hover:text-sky-300"
+          >
+            <InstagramIcon className="h-[1.15rem] w-[1.15rem]" />
+          </a>
           <button
             type="button"
             onClick={(e) => {
               goToSection("#kontakt");
               e.currentTarget.blur();
             }}
-            className={`ml-2 outline-none focus:outline-none focus-visible:outline-none ${CTA_CLASS}`}
+            className={`outline-none focus:outline-none focus-visible:outline-none ${CTA_CLASS}`}
           >
             Umów zajęcia
           </button>
@@ -183,6 +194,19 @@ export default function Navbar() {
           >
             Umów zajęcia
           </button>
+          <a
+            href={INSTAGRAM_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setMenuOpen(false)}
+            className="flex items-center justify-center gap-2.5 rounded-full border border-white/15 px-5 py-3 text-base normal-case tracking-normal text-neutral-200 transition-colors hover:border-sky-400/60 hover:text-sky-300"
+          >
+            <InstagramIcon className="h-5 w-5" />
+            <span>
+              Instagram{" "}
+              <span className="text-neutral-400">{INSTAGRAM_HANDLE}</span>
+            </span>
+          </a>
         </div>
       )}
     </header>

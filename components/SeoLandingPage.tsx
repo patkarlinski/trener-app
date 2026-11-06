@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { SeoLandingContent } from "@/lib/seo-landings";
+import { CTA_PRIMARY_FX, CTA_SECONDARY_FX } from "@/lib/cta";
 import {
   buildFaqPageJsonLd,
   buildServiceJsonLd,
@@ -120,13 +121,13 @@ export default function SeoLandingPage({
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
             <Link
               href="/#kontakt"
-              className="inline-flex cursor-pointer items-center justify-center rounded-full bg-sky-400 px-6 py-3 text-base font-semibold tracking-wide text-neutral-950 transition-colors hover:bg-sky-300"
+              className={`inline-flex cursor-pointer items-center justify-center rounded-full bg-sky-400 px-6 py-3 text-base font-semibold tracking-wide text-neutral-950 ${CTA_PRIMARY_FX}`}
             >
               Umów zajęcia
             </Link>
             <Link
               href="/#oferta"
-              className="inline-flex cursor-pointer items-center justify-center rounded-full border border-white/25 px-6 py-3 text-base text-neutral-200 transition-colors hover:border-white/50 hover:bg-white/5"
+              className={`inline-flex cursor-pointer items-center justify-center rounded-full border border-white/25 px-6 py-3 text-base text-neutral-200 hover:border-white/50 hover:bg-white/5 ${CTA_SECONDARY_FX}`}
             >
               Zobacz ofertę
             </Link>

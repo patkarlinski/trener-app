@@ -4,6 +4,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { scrollToSectionId } from "@/lib/scrollToSection";
+import {
+  CTA_PRIMARY_FX,
+  CTA_SECONDARY_FX,
+  INSTAGRAM_HANDLE,
+  INSTAGRAM_URL,
+} from "@/lib/cta";
+import InstagramIcon from "@/components/InstagramIcon";
 
 const FAQ = [
   {
@@ -80,8 +87,7 @@ const OFFER = [
 const PHONE_E164 = "48511258922";
 const PHONE_DISPLAY = "511 258 922";
 const EMAIL = "kontakt@trenerkarlinski.pl";
-const CTA_PILL_CLASS =
-  "cursor-pointer px-6 py-3 rounded-full bg-sky-400 text-neutral-950 text-base font-semibold tracking-wide hover:bg-sky-300 transition-colors";
+const CTA_PILL_CLASS = `cursor-pointer px-6 py-3 rounded-full bg-sky-400 text-neutral-950 text-base font-semibold tracking-wide ${CTA_PRIMARY_FX}`;
 
 function buildContactMessage(goal: ContactGoal) {
   return `Cześć Patryk! Chcę umówić pierwszy trening.
@@ -191,16 +197,16 @@ export default function PreviewPage() {
             <button
               type="button"
               onClick={() => scrollTo("#kontakt")}
-              className="cursor-pointer w-full rounded-full bg-sky-400 px-8 py-3.5 text-base font-semibold tracking-wide text-neutral-950 transition-colors hover:bg-sky-300 md:w-auto md:text-lg"
+              className={`cursor-pointer w-full rounded-full bg-sky-400 px-8 py-3.5 text-base font-semibold tracking-wide text-neutral-950 md:w-auto md:text-lg ${CTA_PRIMARY_FX}`}
             >
-              Umów zajęcia
+              Umów pierwszy trening
             </button>
             <button
               type="button"
               onClick={() => scrollTo("#oferta")}
-              className="cursor-pointer w-full rounded-full border border-white/25 px-8 py-3.5 text-base font-semibold text-neutral-200 transition-colors hover:border-white/50 hover:bg-white/5 md:w-auto md:text-lg md:font-normal"
+              className={`cursor-pointer w-full rounded-full border border-white/25 px-8 py-3.5 text-base font-semibold text-neutral-200 hover:border-white/50 hover:bg-white/5 md:w-auto md:text-lg md:font-normal ${CTA_SECONDARY_FX}`}
             >
-              Oferta
+              Zobacz ofertę
             </button>
           </div>
         </div>
@@ -389,7 +395,7 @@ export default function PreviewPage() {
               href={whatsappHref}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex cursor-pointer items-center justify-center gap-2.5 px-6 py-4 rounded-full bg-sky-400 text-neutral-950 text-base font-semibold tracking-wide hover:bg-sky-300 transition-colors"
+              className={`inline-flex cursor-pointer items-center justify-center gap-2.5 px-6 py-4 rounded-full bg-sky-400 text-neutral-950 text-base font-semibold tracking-wide ${CTA_PRIMARY_FX}`}
             >
               <svg
                 className="w-5 h-5 shrink-0"
@@ -403,7 +409,7 @@ export default function PreviewPage() {
             </a>
             <a
               href={smsHref}
-              className="inline-flex cursor-pointer items-center justify-center gap-2.5 px-6 py-4 rounded-full border border-white/20 bg-white/[0.03] text-white text-base font-semibold tracking-wide hover:bg-white/[0.08] transition-colors"
+              className={`inline-flex cursor-pointer items-center justify-center gap-2.5 px-6 py-4 rounded-full border border-white/20 bg-white/[0.03] text-white text-base font-semibold tracking-wide hover:bg-white/[0.08] ${CTA_SECONDARY_FX}`}
             >
               <svg
                 className="w-5 h-5 shrink-0"
@@ -466,6 +472,31 @@ export default function PreviewPage() {
               </button>
             </div>
           </div>
+
+          <a
+            href={INSTAGRAM_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group mt-3 flex w-full items-center gap-4 rounded-2xl border border-white/10 bg-gradient-to-r from-fuchsia-500/10 via-rose-500/10 to-amber-400/10 px-5 py-4 text-left transition-colors hover:border-white/30 sm:mt-4 sm:px-6"
+          >
+            <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white/10 text-white transition-colors group-hover:bg-white/15">
+              <InstagramIcon className="h-6 w-6" />
+            </span>
+            <span className="min-w-0 flex-1">
+              <span className="block text-base font-semibold text-white sm:text-lg">
+                Zobacz, jak trenujemy — Instagram
+              </span>
+              <span className="block text-sm text-neutral-400">
+                {INSTAGRAM_HANDLE} · zdjęcia i wideo z zajęć
+              </span>
+            </span>
+            <span
+              aria-hidden
+              className="text-neutral-500 transition-transform group-hover:translate-x-1 group-hover:text-white"
+            >
+              →
+            </span>
+          </a>
         </div>
       </section>
 
@@ -580,7 +611,18 @@ export default function PreviewPage() {
               </span>
             </Link>
           </div>
-          <p className="mt-10 text-center text-xs text-zinc-600 tracking-wide">
+          <div className="mt-8 flex justify-center">
+            <a
+              href={INSTAGRAM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2.5 rounded-full border border-white/10 px-4 py-2 text-sm text-zinc-300 transition-colors hover:border-sky-400/50 hover:text-white"
+            >
+              <InstagramIcon className="h-4 w-4 text-sky-400/80" />
+              <span>{INSTAGRAM_HANDLE}</span>
+            </a>
+          </div>
+          <p className="mt-8 text-center text-xs text-zinc-600 tracking-wide">
             © {new Date().getFullYear()} Patryk Karliński
           </p>
         </div>
