@@ -33,9 +33,9 @@ export const SEO_LANDINGS: Record<SeoCity, SeoLandingContent> = {
     cityNameLocative: "w Szczecinie",
     path: "/nauka-plywania-szczecin",
     title:
-      "Nauka pływania Szczecin | Dla dorosłych i dzieci | Patryk Karliński",
+      "Nauka pływania Szczecin | Dorośli i dzieci | Trener Karliński",
     description:
-      "Nauka i doskonalenie pływania w Szczecinie. Indywidualne lekcje pływania dla dorosłych i dzieci — trener na basenie, technika, triathlon. Umów pierwszy trening.",
+      "Nauka pływania Szczecin i doskonalenie pływania dla dorosłych. Indywidualne lekcje 1:1 lub w parze na Floating Arena i SDS. Umów pierwszy trening.",
     ogTitle: "Nauka pływania Szczecin | Indywidualne lekcje | Patryk Karliński",
     ogDescription:
       "Lekcje pływania 1:1 lub w parze w Szczecinie — nauka dla dorosłych, doskonalenie techniki i trening pod zawody.",

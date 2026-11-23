@@ -25,9 +25,10 @@ export const metadata: AppRootMetadata = {
   alternates: {
     canonical: "https://trenerkarlinski.pl",
   },
-  title: "Patryk Karliński | Trener Pływania i Trening Personalny",
+  title:
+    "Nauka pływania Szczecin i Police | Trener Patryk Karliński",
   description:
-    "Indywidualne lekcje pływania dla dorosłych i dzieci w Szczecinie i Policach. Nauka i doskonalenie pływania, trener na basenie, trening personalny i triathlon.",
+    "Nauka pływania dla dorosłych i doskonalenie techniki w Szczecinie i Policach. Indywidualne lekcje 1:1 lub w parze, trener na basenie. Umów pierwszy trening.",
   keywords: [
     "nauka pływania Szczecin",
     "nauka pływania Police",
@@ -47,9 +48,9 @@ export const metadata: AppRootMetadata = {
     "Patryk Karliński",
   ],
   openGraph: {
-    title: "Patryk Karliński | Trener Pływania i Trening Personalny",
+    title: "Nauka pływania Szczecin i Police | Trener Patryk Karliński",
     description:
-      "Nauka i doskonalenie pływania dla dorosłych i dzieci. Indywidualne lekcje pływania oraz trening personalny w Szczecinie i Policach.",
+      "Indywidualne lekcje pływania i doskonalenie techniki dla dorosłych w Szczecinie i Policach. Pierwszy trening w niższej cenie.",
     url: "https://trenerkarlinski.pl", 
     siteName: "Patryk Karliński – Trener",
     images: [

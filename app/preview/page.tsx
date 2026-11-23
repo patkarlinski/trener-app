@@ -243,7 +243,22 @@ export default function PreviewPage() {
               oraz licencjonowanym trenerem. Prowadzę indywidualne lekcje
               pływania i treningi personalne dla dzieci oraz dorosłych — od
               przełamania lęku przed wodą, przez doskonalenie techniki, aż po
-              poprawę czasów i budowanie formy na lądzie.
+              poprawę czasów i budowanie formy na lądzie. Zajęcia w Szczecinie
+              (Floating Arena, SDS) i w Policach — szczegóły:{" "}
+              <Link
+                href="/nauka-plywania-szczecin"
+                className="text-sky-400 underline underline-offset-4 hover:text-sky-300"
+              >
+                nauka pływania Szczecin
+              </Link>{" "}
+              oraz{" "}
+              <Link
+                href="/nauka-plywania-police"
+                className="text-sky-400 underline underline-offset-4 hover:text-sky-300"
+              >
+                nauka pływania Police
+              </Link>
+              .
             </p>
             <ul className="list-none space-y-3 text-neutral-300 pl-0">
               {[
